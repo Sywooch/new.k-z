@@ -1,27 +1,37 @@
 <?php
 
+use yii\helpers\Html;
+
 /* @var $this yii\web\View */
 /* @var $name string */
 /* @var $message string */
 /* @var $exception Exception */
 
-use yii\helpers\Html;
-
-$this->title = $name;
+$this->title = "404 - Ошибка: 404";
 ?>
-<div class="site-error">
+<div id="frame">
+    <div id="outline">
+        <div id="errorNumber"><h1>404</h1>
+            <h2>Материал не найден</h2></div>
+        <div id="errorboxbody">
+            <p><strong>Вы не можете посетить текущую страницу по причине:</strong></p>
 
-    <h1><?= Html::encode($this->title) ?></h1>
+            <ol>
+                <li><b>просроченная закладка/избранное</b></li>
+                <li>поисковый механизм, у которого <strong>просрочен список для этого сайта</strong></li>
+                <li><strong>пропущен адрес</strong></li>
+                <li>у вас <strong>нет права доступа</strong> на эту страницу</li>
+                <li>Запрашиваемый ресурс не найден.</li>
+                <li>В процессе обработки вашего запроса произошла ошибка.</li>
+            </ol>
 
-    <div class="alert alert-danger">
-        <?= nl2br(Html::encode($message)) ?>
+            <p><strong>Пожалуйста, перейдите на одну из следующих страниц:</strong></p>
+
+            <ol>
+                <li><a href="/index.php" title="Вернуться на Домашнюю страницу">Домашняя страница</a></li>
+            </ol>
+        </div>
+
+
     </div>
-
-    <p>
-        The above error occurred while the Web server was processing your request.
-    </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
-
 </div>
