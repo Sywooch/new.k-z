@@ -4,7 +4,7 @@ namespace backend\controllers;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
-use common\models\LoginForm;
+use backend\models\LoginForm;
 use yii\filters\VerbFilter;
 
 /**
@@ -12,6 +12,17 @@ use yii\filters\VerbFilter;
  */
 class SiteController extends Controller
 {
+
+    public function beforeAction($action){
+        if(!\Yii::$app->user->isGuest){
+            \Yii::$app->user->identity->last_visit = time();
+
+            \Yii::$app->user->identity->save();
+        }
+
+        return parent::beforeAction($action);
+    }
+
     /**
      * @inheritdoc
      */

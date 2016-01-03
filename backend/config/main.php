@@ -7,14 +7,15 @@ $params = array_merge(
 );
 
 return [
-    'id' => 'app-backend',
+    'id' => 'k-z_backend',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => require(__DIR__.'/modules.php'),
     'components' => [
+        'urlManager'    =>  require(__DIR__.'/urlManager.php'),
         'user' => [
-            'identityClass' => 'common\models\User',
+            'identityClass' => 'backend\models\User',
             'enableAutoLogin' => true,
         ],
         'log' => [

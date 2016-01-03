@@ -1,4 +1,4 @@
-<?php use app\models\News;
+<?php use frontend\models\News;
 
 $politicsNews = News::getTopByCategory($cat, 4);
 ?>
@@ -11,6 +11,7 @@ $politicsNews = News::getTopByCategory($cat, 4);
                         <div class="nspArt" style="width:100%!important;">
                             <div style="padding:0 10px 0 0">
                                 <?php
+                                return;
                                 preg_match('/(img|src)=("|\')[^"\'>]+/i', $politicsNews['0']['text_preview'], $media);
                                 $image = '';
                                 if(sizeof($media) >= 1){

@@ -17,7 +17,11 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": ">=2.0.6",
         "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*"
+        "yiisoft/yii2-swiftmailer": "*",
+        "dmstr/yii2-adminlte-asset": "2.*",
+        "kartik-v/yii2-grid": "*",
+        "kartik-v/yii2-mpdf": "^1.0",
+        "bobroid/yii2-remodal": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
@@ -28,6 +32,12 @@
     "config": {
         "process-timeout": 1800
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/BoBRoID/yii2-remodal"
+        }
+    ],
     "extra": {
         "asset-installer-paths": {
             "npm-asset-library": "vendor/npm",

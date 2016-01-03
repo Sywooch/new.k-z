@@ -1,0 +1,20 @@
+/**
+ * @version		4.2
+ * @package		AllVideos (plugin)
+ * @author    JoomlaWorks - http://www.joomlaworks.net
+ * @copyright	Copyright (c) 2006 - 2012 JoomlaWorks Ltd. All rights reserved.
+ * @license		GNU/GPL license:http://www.gnu.org/copyleft/gpl.html
+ */
+
+/* General */
+.avPlayerWrapper div,
+.avPlayerWrapper iframe,
+.avPlayerWrapper object,
+.avPlayerWrapper embed { outline:0; padding:0; margin:0; }
+
+/* Layout */
+.avPlayerWrapper { display:block; text-align:center; clear:both; }
+.avPlayerWrapper .avPlayerContainer { display:block; margin:4px 0; }
+	.avVideo .avPlayerContainer { padding:5px 8px 5px; border-radius:4px; background:url(../images/allvideos_v4_bg_1000x550.jpg) repeat 50% 50%; }
+	.avAudio .avPlayerContainer { }
+.avPlayerWrapper .avPlayerContainer .avPlayerBlock { display:block; padding:0; margin:0; line-height:normal; }

@@ -2,6 +2,7 @@
 use frontend\assets\AppAsset;
 use frontend\models\Category;
 use frontend\models\News;
+use frontend\widgets\AdsSliderWidget;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\Breadcrumbs;
@@ -78,16 +79,13 @@ AppAsset::register($this);
                 </h1>
 
                 <div id="gkHighlighter">
-                    <div class="bannergroup">
-                        <div class="banneritem">
-
+                    <?php foreach([] as $banner){ ?>
+                        <div class="bannergroup">
+                            <div class="banneritem">
+                                <?=$banner->code?>
+                            </div>
                         </div>
-                    </div>
-                    <div class="bannergroup">
-                        <div class="banneritem">
-
-                        </div>
-                    </div>
+                    <?php } ?>
                 </div>
             </div>
             <?=$this->render('_topMenu', [
@@ -97,69 +95,7 @@ AppAsset::register($this);
             <div id="system-message-container"></div>
             <div id="mainContent" class="gkWrap clear">
                 <div id="gkTop1" class="gkMain gkWrap">
-                    <div id="gkToptop1" class="gkCol gkColLeft">
-                        <div class="box nsp header">
-                            <div>
-                                <div class="content">
-                                    <div class="nspMain autoanim nspFs100 activated" id="nsp-nsp_157" style="width:100%;">
-                                        <div class="nspArts right" style="width:100%;">
-                                            <div class="nspTopInterface">
-                                                <div>
-                                                    <ul class="nspPagination">
-                                                        <li class="active">1</li>
-                                                        <li class="">2</li>
-                                                        <li class="">3</li>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                            <div style="width: 512px; overflow: hidden;" class="nspArtScroll1">
-                                                <div style="width: 100000px;" class="nspArtScroll2">
-                                                    <div style="width: 512px; float: left;" class="nspArtPage">
-                                                        <div class="nspArt" style="width:100%!important;">
-                                                            <div style="padding:0">
-                                                                <a href="/polytyka/33907-kakoj-narod-fraktsiya-i-partiya-vyshe-naroda">
-                                                                    <img class="nspImage tleft fleft" src="http://k-z.com.ua/modules/mod_news_pro_gk4/cache/512x285xstories.politika.partiya_fraktsiyansp_157.jpg.pagespeed.ic.HaTF6Vsgx2.jpg" alt="Какой народ? Фракция и партия выше народа" style="width:512px;height:285px;margin:60px 0 0 0;">
-                                                                </a>
-                                                                <h4 class="nspHeader tleft fnone">
-                                                                    <a href="/polytyka/33907-kakoj-narod-fraktsiya-i-partiya-vyshe-naroda" title="Какой народ? Фракция и партия выше народа">Какой народ? Фракция и партия выше народа</a>
-                                                                    <p class="nspInfo  tleft fnone">07 Апрель 2015</p>
-                                                                </h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div style="width: 512px; float: left;" class="nspArtPage">
-                                                        <div class="nspArt " style="width:100%!important;">
-                                                            <div style="padding:0">
-                                                                <a href="/byudzhet-ukrainy/33896-nkre-igraet-na-ruku-akhmetovu">
-                                                                    <img class="nspImage tleft fleft" src="http://k-z.com.ua/modules/mod_news_pro_gk4/cache/512x285xstories.byudzhet-ukrainy.kiev_energonsp_157.jpg.pagespeed.ic.Ef9BkXCdUy.jpg" alt="НКРЭ играет на руку Ахметову?" style="width:512px;height:285px;margin:60px 0 0 0;">
-                                                                </a>
-                                                                <h4 class="nspHeader tleft fnone">
-                                                                    <a href="/byudzhet-ukrainy/33896-nkre-igraet-na-ruku-akhmetovu" title="НКРЭ играет на руку Ахметову?">НКРЭ играет на руку Ахметову?</a>
-                                                                    <p class="nspInfo  tleft fnone">06 Апрель 2015</p>
-                                                                </h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div style="width: 512px; float: left;" class="nspArtPage">
-                                                        <div class="nspArt " style="width:100%!important;">
-                                                            <div style="padding:0">
-                                                                <a href="/ukrayna/33890-pro-te-yak-stolichna-vlada-prodovzhue-ne-lyubiti-knigarni">
-                                                                    <img class="nspImage tleft fleft" src="http://k-z.com.ua/modules/mod_news_pro_gk4/cache/512x285xstories.ukraina.znannya_glavnayansp_157.jpg.pagespeed.ic.-SkUvQDdXY.jpg" alt="Про те, як столична влада продовжує не любити книгарні" style="width:512px;height:285px;margin:60px 0 0 0;">
-                                                                </a>
-                                                                <h4 class="nspHeader tleft fnone"><a href="/ukrayna/33890-pro-te-yak-stolichna-vlada-prodovzhue-ne-lyubiti-knigarni" title="Про те, як столична влада продовжує не любити книгарні">Про те, як столична влада продовжує не любити книгарні</a>
-                                                                    <p class="nspInfo  tleft fnone">05 Апрель 2015</p>
-                                                                </h4>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <?=AdsSliderWidget::widget()?>
                     <div id="gkToptop2" class="gkCol gkColCenter">
                         <div class="box nsp blue color_title small">
                             <div>

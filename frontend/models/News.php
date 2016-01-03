@@ -17,7 +17,7 @@ class News extends \common\models\News
             ->andWhere(['a.category' => 'video'])
             ->asArray()
             ->limit(1)
-            ->orderBy('publish_date desc')
+            ->orderBy('publishDate desc')
             ->one();
     }
 
@@ -34,7 +34,7 @@ class News extends \common\models\News
     }
 
     public static function getTopByCategory($category, $count = 3, $export = false){
-        $news = News::getNews()->andWhere(['a.category' => $category])->limit($count)->orderBy('a.publish_date DESC');
+        $news = News::getNews()->andWhere(['a.category' => $category])->limit($count)->orderBy('a.publishDate DESC');
 
         if(!$export){
             return $news->asArray()->all();
@@ -57,7 +57,7 @@ class News extends \common\models\News
 
     public static function getTop($count = 10){
         return News::getNews()->asArray()->limit($count)->
-        orderBy('a.publish_date desc')->all();
+        orderBy('a.publishDate DESC')->all();
     }
 
     public static function getRand($count){
