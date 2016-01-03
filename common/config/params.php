@@ -15,6 +15,7 @@ return [
             'mode'      =>  '1',
         ]
     ],
+    'oldDb' =>  'old_k-z',
     'fbWidget'  =>  [
         'show'      =>  false,
         'apiKey'    =>  '',

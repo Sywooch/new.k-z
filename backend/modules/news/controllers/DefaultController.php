@@ -11,7 +11,12 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         $newsDataProvider = new ActiveDataProvider([
-            'query' =>  News::find()
+            'query' =>  News::find(),
+            'sort'      =>  [
+                'defaultOrder'  =>  [
+                    'id'    =>  SORT_DESC
+                ]
+            ]
         ]);
 
         return $this->render('index', [
