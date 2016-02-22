@@ -11,6 +11,7 @@ use Yii;
  * @property integer $category
  * @property string $article
  * @property string $link
+ * @property string $creator
  * @property string $text
  * @property integer $author
  * @property string $photo
@@ -33,7 +34,7 @@ class News extends \yii\db\ActiveRecord
         return [
             [['category', 'title', 'link', 'author'], 'required'],
             [['category', 'author'], 'integer'],
-            [['title', 'text', 'photo'], 'string'],
+            [['title', 'text', 'photo', 'creator'], 'string'],
             [['link'], 'string', 'max' => 128]
         ];
     }
@@ -51,6 +52,7 @@ class News extends \yii\db\ActiveRecord
             'text' => 'Text',
             'author' => 'Author',
             'photo' => 'Photo',
+            'creator' => 'Creator',
         ];
     }
 }

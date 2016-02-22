@@ -21,5 +21,6 @@ return array(
     'dmstr\\' => array($vendorDir . '/dmstr/yii2-adminlte-asset'),
     'cebe\\markdown\\' => array($vendorDir . '/cebe/markdown'),
     'bobroid\\remodal\\' => array($vendorDir . '/bobroid/yii2-remodal'),
+    'bobroid\\imperavi\\' => array($vendorDir . '/bobroid/yii2-imperavi-redactor'),
     'Faker\\' => array($vendorDir . '/fzaninotto/faker/src/Faker'),
 );

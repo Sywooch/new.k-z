@@ -11,16 +11,22 @@ class m160103_185734_migrate_from_joomla extends Migration
         $this->addColumn('news', 'unpublishDate', Schema::TYPE_DATETIME);
         $this->addColumn('news', 'checkedDate', Schema::TYPE_DATETIME);
         $this->addColumn('news', 'checked', Schema::TYPE_INTEGER.' UNSIGNED NOT NULL DEFAULT 0');
+        $this->addColumn('news', 'creator', Schema::TYPE_INTEGER.' UNSIGNED NOT NULL DEFAULT 0');
         $this->addColumn('news', 'textPreview', Schema::TYPE_TEXT);
+
+        $this->alterColumn('news', 'author', Schema::TYPE_STRING);
 
         $newsList = new \yii\db\Query();
 
         $newsList = $newsList->from(\Yii::$app->params['oldDb'].'.joom_content')->all();
 
+        $newsCount = count($newsList);
+
         echo "Копирование новостей...";
         foreach($newsList as $news){
             $newNews = new \common\models\News();
-            $newNews->author        = $news['created_by'];
+            $newNews->creator       = $news['created_by'];
+            $newNews->author        = $news['created_by_alias'];
             $newNews->title         = $news['title'];
             $newNews->textPreview   = $news['introtext'];
             $newNews->text          = $news['fulltext'];
@@ -38,7 +44,11 @@ class m160103_185734_migrate_from_joomla extends Migration
             $newNews->checked       = $news['checked_out'];
 
             $newNews->save(false);
+
+            echo $newNews->id.' из '.$newsCount."\n";
         }
+
+
     }
 
     public function down()
@@ -46,7 +56,10 @@ class m160103_185734_migrate_from_joomla extends Migration
         $this->dropColumn('news', 'unpublishDate');
         $this->dropColumn('news', 'checkedDate');
         $this->dropColumn('news', 'checked');
+        $this->dropColumn('news', 'creator');
         $this->dropColumn('news', 'textPreview');
+
+        $this->alterColumn('news', 'author', Schema::TYPE_INTEGER.' UNSIGNED NOT NULL DEFAULT 0');
 
         $this->truncateTable('news');
 

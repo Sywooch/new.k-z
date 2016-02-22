@@ -4,6 +4,7 @@ use yii\helpers\Url;
 
 $this->title = 'Новости';
 
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <br>
 <div class="box">

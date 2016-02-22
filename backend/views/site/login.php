@@ -10,7 +10,7 @@ $this->title = 'Войти';
 
 $fieldOptions1 = [
     'options' => ['class' => 'form-group has-feedback'],
-    'inputTemplate' => "{input}<span class='glyphicon glyphicon-envelope form-control-feedback'></span>"
+    'inputTemplate' => "{input}<span class='glyphicon glyphicon-user form-control-feedback'></span>"
 ];
 
 $fieldOptions2 = [
@@ -21,7 +21,7 @@ $fieldOptions2 = [
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="#">logo</a>
+        <a href="#">Конфликты и Законы</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
@@ -44,14 +44,11 @@ $fieldOptions2 = [
                 <?= $form->field($model, 'rememberMe')->checkbox() ?>
             </div>
             <div class="col-xs-4">
-                <?= Html::submitButton('Sign in', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
+                <?= Html::submitButton('Войти', ['class' => 'btn btn-primary btn-block btn-flat', 'name' => 'login-button']) ?>
             </div>
         </div>
 
 
         <?php ActiveForm::end(); ?>
-
-        <a href="#">I forgot my password</a><br>
-
     </div>
 </div>

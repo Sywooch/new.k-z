@@ -84,10 +84,19 @@ return array (
       '@dmstr' => $vendorDir . '/dmstr/yii2-adminlte-asset',
     ),
   ),
+  'kartik-v/yii2-mpdf' => 
+  array (
+    'name' => 'kartik-v/yii2-mpdf',
+    'version' => '1.0.0.0',
+    'alias' => 
+    array (
+      '@kartik/mpdf' => $vendorDir . '/kartik-v/yii2-mpdf',
+    ),
+  ),
   'kartik-v/yii2-krajee-base' => 
   array (
     'name' => 'kartik-v/yii2-krajee-base',
-    'version' => '1.8.1.0',
+    'version' => '1.8.2.0',
     'alias' => 
     array (
       '@kartik/base' => $vendorDir . '/kartik-v/yii2-krajee-base',
@@ -96,19 +105,19 @@ return array (
   'kartik-v/yii2-grid' => 
   array (
     'name' => 'kartik-v/yii2-grid',
-    'version' => '3.0.8.0',
+    'version' => '3.1.0.0',
     'alias' => 
     array (
       '@kartik/grid' => $vendorDir . '/kartik-v/yii2-grid',
     ),
   ),
-  'kartik-v/yii2-mpdf' => 
+  'bobroid/yii2-imperavi-redactor' => 
   array (
-    'name' => 'kartik-v/yii2-mpdf',
-    'version' => '1.0.0.0',
+    'name' => 'bobroid/yii2-imperavi-redactor',
+    'version' => '9999999-dev',
     'alias' => 
     array (
-      '@kartik/mpdf' => $vendorDir . '/kartik-v/yii2-mpdf',
+      '@bobroid/imperavi' => $vendorDir . '/bobroid/yii2-imperavi-redactor',
     ),
   ),
 );
