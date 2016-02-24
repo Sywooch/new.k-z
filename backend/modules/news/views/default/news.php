@@ -45,6 +45,33 @@ $('button.apps-buttons').on('click', function(e){
 })
 JS;
 
+$css = <<<'CSS'
+.delimeter{
+    border: none;
+    border-bottom: 1px dashed rgba(50, 50, 50, 0.4);
+    margin: 0;
+    padding: 0;
+    padding-left: 10px;
+    margin-top: 5px;
+    background: rgba(25, 25, 25, 0.1);
+}
+
+.delimeter:before{
+    content: 'предпросмотр новости';
+    position: absolute;
+    margin-top: -20px;
+}
+
+.delimeter:after{
+    text-align: right;
+    right: 20px;
+    content: 'продолжение';
+    position: absolute;
+}
+CSS;
+
+$this->registerCss($css);
+
 $this->registerJs($js);
 ?>
 <div class="row">
@@ -86,12 +113,16 @@ $this->registerJs($js);
                     ]
                 )?>
             </div>
-            <div class="box-body">
-                <?=$model->textPreview?>
+            <div class="col-xs-12">
+                <div class="box-body text-preview">
+                    <?=$model->textPreview?>
+                </div>
+                <hr class="delimeter">
+                <div class="box-body">
+                    <?=$model->text?>
+                </div>
             </div>
-            <div class="box-body">
-                <?=$model->text?>
-            </div>
+            <div class="clearfix"></div>
         </div>
     </div>
     <div class="col-md-3">

@@ -25,23 +25,23 @@ class m160103_185734_migrate_from_joomla extends Migration
         echo "Копирование новостей...";
         foreach($newsList as $news){
             $newNews = new \common\models\News();
-            $newNews->creator       = $news['created_by'];
-            $newNews->author        = $news['created_by_alias'];
-            $newNews->title         = $news['title'];
-            $newNews->textPreview   = $news['introtext'];
-            $newNews->text          = $news['fulltext'];
-            $newNews->link          = $news['alias'];
-            $newNews->published     = $news['access'] == '1' ? 1 : 0;
-            $newNews->deleted       = $news['state'] == '-2' ? 1 : 0;
-            $newNews->publishDate   = $news['publish_up'];
-            $newNews->favorite      = $news['featured'];
-            $newNews->hits          = $news['hits'];
+            $newNews->creator           = $news['created_by'];
+            $newNews->author            = $news['created_by_alias'];
+            $newNews->title             = $news['title'];
+            $newNews->textPreview       = $news['introtext'];
+            $newNews->text              = $news['fulltext'];
+            $newNews->link              = $news['alias'];
+            $newNews->published         = $news['access'] == '1' ? 1 : 0;
+            $newNews->deleted           = $news['state'] == '-2' ? 1 : 0;
+            $newNews->publishDate       = $news['publish_up'];
+            $newNews->favorite          = $news['featured'];
+            $newNews->hits              = $news['hits'];
             $newNews->meta_description = $news['metadesc'];
-            $newNews->meta_keywords = $news['metakey'];
-            $newNews->category      = $news['catid'];
-            $newNews->unpublishDate = $news['publish_down'];
-            $newNews->checkedDate   = $news['checked_out_time'];
-            $newNews->checked       = $news['checked_out'];
+            $newNews->meta_keywords     = $news['metakey'];
+            $newNews->category          = $news['catid'];
+            $newNews->unpublishDate     = $news['publish_down'];
+            $newNews->checkedDate       = $news['checked_out_time'];
+            $newNews->checked           = $news['checked_out'];
 
             $newNews->save(false);
 

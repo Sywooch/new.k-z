@@ -33,7 +33,7 @@ class DefaultController extends Controller
 
 
         return $this->render('news_edit', [
-            'model' =>  []
+            'model' =>  new News()
         ]);
     }
 
