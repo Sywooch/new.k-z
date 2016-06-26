@@ -20,4 +20,5 @@ return [
         'show'      =>  false,
         'apiKey'    =>  '',
     ],
+    'cdn'  =>  'http://k-z.com.ua'
 ];

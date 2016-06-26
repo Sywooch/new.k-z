@@ -9,23 +9,68 @@
 namespace frontend\models;
 
 
+/**
+ * @property string categorylink
+ */
 class News extends \common\models\News
 {
 
     public static function getVideo(){
         return self::getNews()
-            ->andWhere(['a.category' => 'video'])
+            ->andWhere(['a.categoryID' => 'video'])
             ->asArray()
             ->limit(1)
             ->orderBy('publishDate desc')
             ->one();
     }
 
+    public function getCategory(){
+        return $this->hasOne(Category::className(), ['id' => 'categoryID']);
+    }
+
+    public function getCategoryLink(){
+        return $this->category->link;
+    }
+    
+    public function getFullLink(){
+        return "/{$this->categorylink}/{$this->id}-{$this->link}";
+    }
+
+    public function getImagePreview(){
+        $image = '';
+        
+        preg_match('/(img|src)=("|\')[^"\'>]+/i', $this->textPreview, $media);
+        
+        if(sizeof($media) >= 1){
+            $image = preg_replace('/src="/', '', $media['0']);
+        }
+
+        return preg_match('/^http/', $image) ? $image : \Yii::$app->params['cdn'].$image;
+    }
+
+    public function getTitle($len = 0){
+        if($len == 0){
+            return $this->title;
+        }
+
+        return strlen($this->title) > $len ? trim(mb_substr($this->title, 0, $len, 'UTF-8')).'…' : $this->title;
+    }
+    
+    public function getTextPreview($len = 0){
+        $preview = strip_tags($this->textPreview);
+        
+        if($len == 0){
+            return $preview;
+        }
+
+        return strlen($preview) > $len ? trim(mb_substr($preview, 0, $len, 'UTF-8')).'…' : $preview;
+    }
+
     public static function getNews(){
-        return News::find()->
+        return self::find()->
         select(['a.*', 'b.link as categorylink'])->
         from([News::tableName().' `a`', Category::tableName().' `b`'])->
-        where('a.category = b.id')->
+        where('a.categoryID = b.id')->
         andWhere(['a.published' => '1', 'b.published' => '1']);
     }
 
@@ -34,7 +79,7 @@ class News extends \common\models\News
     }
 
     public static function getTopByCategory($category, $count = 3, $export = false){
-        $news = News::getNews()->andWhere(['a.category' => $category])->limit($count)->orderBy('a.publishDate DESC');
+        $news = News::getNews()->andWhere(['a.categoryID' => $category])->limit($count)->orderBy('a.publishDate DESC');
 
         if(!$export){
             return $news->asArray()->all();
@@ -55,9 +100,20 @@ class News extends \common\models\News
         return News::getTopByCategory($category, $count, true)->limit($count)->offset($offset)->asArray()->all();
     }
 
+    public static function getPopular($count = 10){
+        return self::find()
+            ->with('category')
+            ->orderBy('hits DESC')
+            ->limit($count)
+            ->all();
+    }
+
     public static function getTop($count = 10){
-        return News::getNews()->asArray()->limit($count)->
-        orderBy('a.publishDate DESC')->all();
+        return self::find()
+            ->with('category')
+            ->orderBy('publishDate DESC')
+            ->limit($count)
+            ->all();
     }
 
     public static function getRand($count){

@@ -42,6 +42,7 @@ class m160103_185734_migrate_from_joomla extends Migration
             $newNews->unpublishDate     = $news['publish_down'];
             $newNews->checkedDate       = $news['checked_out_time'];
             $newNews->checked           = $news['checked_out'];
+            $newNews->image = $newNews->imagePreview;
 
             $newNews->save(false);
 

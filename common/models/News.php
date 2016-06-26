@@ -20,12 +20,13 @@ use Yii;
  * @property string $hits
  * @property string $meta_description
  * @property string $meta_keywords
- * @property integer $category
+ * @property integer $categoryID
  * @property string $unpublishDate
  * @property string $checkedDate
  * @property integer $checked
  * @property integer $creator
  * @property string $textPreview
+ * @property Category $category
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -44,7 +45,7 @@ class News extends \yii\db\ActiveRecord
     {
         return [
             [['title', 'text', 'meta_description', 'meta_keywords', 'textPreview'], 'string'],
-            [['published', 'deleted', 'favorite', 'hits', 'category', 'checked', 'creator'], 'integer'],
+            [['published', 'deleted', 'favorite', 'hits', 'categoryID', 'checked', 'creator'], 'integer'],
             [['publishDate', 'unpublishDate', 'checkedDate'], 'safe'],
             [['author', 'link', 'image'], 'string', 'max' => 255]
         ];
@@ -69,7 +70,7 @@ class News extends \yii\db\ActiveRecord
             'hits' => Yii::t('common', 'Hits'),
             'meta_description' => Yii::t('common', 'Meta Description'),
             'meta_keywords' => Yii::t('common', 'Meta Keywords'),
-            'category' => Yii::t('common', 'Category'),
+            'categoryID' => Yii::t('common', 'Category'),
             'unpublishDate' => Yii::t('common', 'Unpublish Date'),
             'checkedDate' => Yii::t('common', 'Checked Date'),
             'checked' => Yii::t('common', 'Checked'),

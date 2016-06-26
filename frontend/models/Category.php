@@ -16,4 +16,12 @@ class Category extends \common\models\Category
         return Category::find()->where(['menu' => $type])->orderBy('menu_position')->all();
     }
 
+    public function getNews(){
+        return $this->hasMany(News::className(), ['categoryID' => 'id']);
+    }
+
+    public function getTopNews($count = 3){
+        return $this->getNews()->orderBy('publishDate DESC')->limit($count)->all();
+    }
+
 }
