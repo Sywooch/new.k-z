@@ -8,8 +8,8 @@ $params = array_merge(
 
 return [
     'language'  =>  'ru_RU',
-    'id' => 'k-z.frontend',
-    'basePath' => dirname(__DIR__),
+    'id'        => 'k-z.frontend',
+    'basePath'  => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'frontend\controllers',
     'components' => [
