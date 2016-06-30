@@ -1,6 +1,7 @@
 <?php
 use frontend\assets\AppAsset;
 use frontend\models\Category;
+use frontend\models\Menu;
 use frontend\models\News;
 use frontend\widgets\AdsSliderWidget;
 use yii\helpers\Html;
@@ -14,13 +15,6 @@ $this->title = 'Конфликты и законы - '.$this->title;
 $this->registerLinkTag(['href' => '/images/favicon.ico', 'rel'  =>  'shortcut icon']);
 
 $ct = explode('/', \yii::$app->request->url)[1];
-
-$menuItems = [
-    '1' =>  Category::getMenu('1'),
-    '2' =>  Category::getMenu('2'),
-    '3' =>  Category::getMenu('3'),
-    '4' =>  Category::getMenu('4')
-];
 
 $btmArticles = [
     '1' => [
@@ -68,7 +62,7 @@ AppAsset::register($this);
     <script async="async" defer="defer" type="t" src="http://k-z.com.ua/modules/mod_news_pro_gk4/interface/scripts/engine.portal.mode.4.js"></script>
 </head>
 <body>
-<script type="text/javascript" src="http://k-z.com.ua/modules/mod_news_pro_gk4/interface/scripts/engine.portal.mode.4.js"></script>
+    <script type="text/javascript" src="http://k-z.com.ua/modules/mod_news_pro_gk4/interface/scripts/engine.portal.mode.4.js"></script>
 <?php $this->beginBody() ?>
         <div class="gkMain gkWrap" id="gkPage">
             <div id="gkLogoWrap">
@@ -90,10 +84,10 @@ AppAsset::register($this);
             <?=$this->render('_topMenu', [
                 'menuItems' => $menuItems,
                 'ct'        => $ct
-            ]);?>
-            <div id="system-message-container"></div>
-            <?=$content?>
-            <?=$this->render('_bottomMenu', [
+            ]),
+            Html::tag('div', '', ['id' => 'system-message-container']),
+            $content,
+            $this->render('_bottomMenu', [
                 'menuItems'     =>  $menuItems,
                 'btmArticles'   =>  $btmArticles
             ]);
@@ -103,12 +97,9 @@ AppAsset::register($this);
                     <div id="gkCopyrights">
                         <div id="gkFooterNav">
                             <ul class="menu">
-                                <li class="item-424">
-                                    <a href="/press-reliz">Пресс-релиз</a>
-                                </li>
-                                <li class="item-312">
-                                    <a href="/redaktsiya">Редакция</a>
-                                </li>
+                                <?php foreach(Menu::findByAlias('nizhnee-menyu')->items as $menuItem){
+                                    echo Html::tag('li', Html::a($menuItem->name, "/$menuItem->link"));
+                                } ?>
                             </ul>
                         </div>
                         <span>

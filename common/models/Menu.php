@@ -54,7 +54,7 @@ class Menu extends \yii\db\ActiveRecord
      */
     public function getItems()
     {
-        return $this->hasMany(MenuItem::className(), ['menuID' => 'id']);
+        return $this->hasMany(MenuItem::className(), ['menuID' => 'id'])->orderBy('order');
     }
 
     public function beforeSave($insert)

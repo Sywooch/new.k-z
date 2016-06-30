@@ -1,16 +1,14 @@
+<?php
+use frontend\models\Menu;
+use yii\helpers\Html;
+?>
+
 <div id="gkBottomWrap" class="gkWrap clear">
     <div id="gkMiddleNav1" class="gkWrap">
         <ul class="menu">
-            <?php foreach($menuItems['1'] as $m){ ?>
-                <li class="item">
-                    <a href="/<?=$m->link?>"><?=$m->name?></a>
-                </li>
-            <?php
-            }
-            ?>
-            <li class="item">
-                <a href="/rss">RSS</a>
-            </li>
+            <?php foreach(Menu::findByAlias('top-menu-1')->items as $menuItem){
+                echo Html::tag('li', Html::a($menuItem->name, "/$menuItem->link"));
+            } ?>
         </ul>
     </div>
     <div id="gkBottom1" class="gkWrap">
@@ -149,13 +147,9 @@
 
     <div id="gkMiddleNav2" class="gkWrap">
         <ul class="menu">
-            <?php foreach($menuItems['3'] as $m){ ?>
-                <li class="item">
-                    <a href="/<?=$m->link?>"><?=$m->name?></a>
-                </li>
-            <?php
-            }
-            ?>
+            <?php foreach(Menu::findByAlias('top-menu-3')->items as $menuItem){
+                echo Html::tag('li', Html::a($menuItem->name, "/$menuItem->link"));
+            } ?>
         </ul>
     </div>
 
