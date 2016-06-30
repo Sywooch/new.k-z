@@ -11,8 +11,6 @@ use Yii;
  * @property string $link
  * @property string $title
  * @property integer $parent
- * @property integer $menu
- * @property integer $menu_position
  * @property string $created
  * @property integer $created_user
  * @property string $meta_description
@@ -38,7 +36,7 @@ class Category extends \yii\db\ActiveRecord
         return [
             [['link', 'created', 'created_user'], 'required'],
             [['title', 'meta_description', 'meta_keywords'], 'string'],
-            [['parent', 'menu', 'menu_position', 'created_user', 'deleted', 'published'], 'integer'],
+            [['parent', 'created_user', 'deleted', 'published'], 'integer'],
             [['created'], 'safe'],
             [['link'], 'string', 'max' => 255]
         ];
@@ -54,8 +52,6 @@ class Category extends \yii\db\ActiveRecord
             'link' => Yii::t('common', 'Link'),
             'title' => Yii::t('common', 'Title'),
             'parent' => Yii::t('common', 'Parent'),
-            'menu' => Yii::t('common', 'Menu'),
-            'menu_position' => Yii::t('common', 'Menu Position'),
             'created' => Yii::t('common', 'Created'),
             'created_user' => Yii::t('common', 'Created User'),
             'meta_description' => Yii::t('common', 'Meta Description'),
