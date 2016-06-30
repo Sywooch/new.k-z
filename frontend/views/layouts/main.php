@@ -82,13 +82,11 @@ AppAsset::register($this);
                 </div>
             </div>
             <?=$this->render('_topMenu', [
-                'menuItems' => $menuItems,
                 'ct'        => $ct
             ]),
             Html::tag('div', '', ['id' => 'system-message-container']),
             $content,
             $this->render('_bottomMenu', [
-                'menuItems'     =>  $menuItems,
                 'btmArticles'   =>  $btmArticles
             ]);
             $this->endBody() ?>
