@@ -17,6 +17,7 @@ use yii\helpers\Json;
  * @property string $created
  * @property string $categories
  * @property string $articles
+ * @property string $fullLink
  */
 class NewsFeed extends \yii\db\ActiveRecord
 {
@@ -54,15 +55,15 @@ class NewsFeed extends \yii\db\ActiveRecord
     {
         parent::afterFind();
 
-        if(empty($this->params)){
+        if(!empty($this->params)){
             $this->params = Json::decode($this->params);
         }
 
-        if(empty($this->categories)){
+        if(!empty($this->categories)){
             $this->categories = Json::decode($this->categories);
         }
 
-        if(empty($this->articles)){
+        if(!empty($this->articles)){
             $this->articles = Json::decode($this->articles);
         }
     }
@@ -79,6 +80,10 @@ class NewsFeed extends \yii\db\ActiveRecord
 
     public function getFullLink(){
         return "{$this->id}-{$this->link}";
+    }
+
+    public function getNews(){
+        return News::find()->where(['or', ['in', 'categoryID', $this->categories],  ['in', 'id', $this->articles]]);
     }
 
     /**

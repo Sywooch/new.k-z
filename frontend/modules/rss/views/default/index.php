@@ -4,6 +4,7 @@ use yii\grid\GridView;
 use yii\grid\SerialColumn;
 use yii\helpers\Url;
 
+$this->title = 'RSS ленты';
 
 ?>
 <div id="gkContentMainbody" class="gkMain gkPaddingR">
@@ -31,7 +32,7 @@ use yii\helpers\Url;
                                         'attribute' =>  'link',
                                         'format'    =>  'raw',
                                         'value'     =>  function($model){
-                                            return Html::a('xml', Url::to(['/rss/'.$model->fullLink]));
+                                            return Html::a('xml', Url::to(['/rss/'.$model->fullLink]), ['class' => 'btn btn-link']);
                                         }
                                     ]
                                 ]
