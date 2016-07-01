@@ -24,7 +24,9 @@ class m160103_185734_migrate_from_joomla extends Migration
 
         echo "Копирование новостей...";
         foreach($newsList as $news){
-            $newNews = new \frontend\models\News();
+            $newNews = new \frontend\models\News([
+                'id'    =>  $news['id']
+            ]);
             $newNews->creator           = $news['created_by'];
             $newNews->author            = $news['created_by_alias'];
             $newNews->title             = $news['title'];

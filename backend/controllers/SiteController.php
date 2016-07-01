@@ -22,6 +22,7 @@ class SiteController extends Controller
 
         return parent::beforeAction($action);
     }
+    
 
     /**
      * @inheritdoc

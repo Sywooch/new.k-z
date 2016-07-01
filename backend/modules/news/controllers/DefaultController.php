@@ -86,7 +86,7 @@ class DefaultController extends Controller
         $image = new Image([
             'userID'    =>  \Yii::$app->user->id,
             'newsID'    =>  $newsID,
-            'link'      =>  '/images/stories/'.$file
+            'link'      =>  \Yii::$app->params['cdn'].'/images/stories/'.$file
         ]);
 
         $image->save(false);
@@ -95,7 +95,7 @@ class DefaultController extends Controller
             \Yii::$app->response->format = 'json';
 
             return [
-                'filelink'   =>  \Yii::$app->params['cdn'].$image->link,
+                'filelink'   =>  $image->link,
                 'id'    =>  "img{$image->id}"
             ];
         }
@@ -115,8 +115,8 @@ class DefaultController extends Controller
         foreach(Image::find()->each() as $image){
             $imageObj = new \stdClass();
 
-            $imageObj->thumb = \Yii::$app->params['cdn'].$image->link;
-            $imageObj->image = \Yii::$app->params['cdn'].$image->link;
+            $imageObj->thumb = $image->link;
+            $imageObj->image = $image->link;
             $imageObj->title = empty($image->description) ? '' : $image->description;
             $imageObj->id = "img{$image->id}";
 

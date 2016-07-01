@@ -125,7 +125,7 @@ class News extends \common\models\News
      * @return string
      */
     public function getTextPreview($len = 0){
-        $preview = strip_tags($this->textPreview);
+        $preview = strip_tags($this->textPreview, '<a></a><p></p>');
         
         if($len == 0){
             return $preview;

@@ -77,7 +77,7 @@ class DefaultController extends Controller
                     $text = $model->textPreview;
 
                     if(array_key_exists('hideImages', $newsFeed->params) && $newsFeed->params['hideImages'] == 1){
-                        $text = strip_tags($text, 'a');
+                        $text = strip_tags($text, '<a></a><p></p>');
                     }
 
                     return StringHelper::truncateWords($text, 50);
