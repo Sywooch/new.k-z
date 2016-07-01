@@ -13,7 +13,10 @@ class m160103_185734_migrate_from_joomla extends Migration
         $this->addColumn('news', 'checked', Schema::TYPE_INTEGER.' UNSIGNED NOT NULL DEFAULT 0');
         $this->addColumn('news', 'creator', Schema::TYPE_INTEGER.' UNSIGNED NOT NULL DEFAULT 0');
         $this->addColumn('news', 'textPreview', $this->text());
+        $this->addColumn('news', 'publishTimestamp', $this->integer()->unsigned()->notNull());
+        $this->createIndex('publishTimestamp', 'news', 'publishTimestamp');
 
+        $this->execute("UPDATE `news` SET `publishTimestamp` = UNIX_TIMESTAMP(STR_TO_DATE(`publishDate`, '%Y-%m-%d %H:%i:%s'))");
         $this->alterColumn('news', 'author', Schema::TYPE_STRING);
 
         $newsList = new \yii\db\Query();
@@ -63,7 +66,7 @@ class m160103_185734_migrate_from_joomla extends Migration
         $this->dropColumn('news', 'textPreview');
 
         $this->alterColumn('news', 'author', Schema::TYPE_INTEGER.' UNSIGNED NOT NULL DEFAULT 0');
-
+        $this->dropColumn('news', 'publishTimestamp');
         $this->truncateTable('news');
 
         return true;
