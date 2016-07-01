@@ -31,5 +31,10 @@ return [
             'errorAction' => 'site/error',
         ],
     ],
+    'modules' => [
+        'rss' => [
+            'class' => 'frontend\modules\rss\Module',
+        ],
+    ],
     'params' => $params,
 ];
