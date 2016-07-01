@@ -80,6 +80,21 @@ class News extends \yii\db\ActiveRecord
         ];
     }
 
+    /**
+     * @return string
+     */
+    public function getImagePreview(){
+        $image = '';
+
+        preg_match('/(img|src)=("|\')[^"\'>]+/i', $this->textPreview, $media);
+
+        if(sizeof($media) >= 1){
+            $image = preg_replace('/src="/', '', $media['0']);
+        }
+
+        return preg_match('/^http/', $image) ? $image : \Yii::$app->params['cdn'].$image;
+    }
+
     public function beforeSave($insert)
     {
         if(empty($this->link)){

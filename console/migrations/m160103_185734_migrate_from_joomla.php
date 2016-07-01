@@ -27,7 +27,7 @@ class m160103_185734_migrate_from_joomla extends Migration
 
         echo "Копирование новостей...";
         foreach($newsList as $news){
-            $newNews = new \frontend\models\News([
+            $newNews = new \common\models\News([
                 'id'    =>  $news['id']
             ]);
             $newNews->creator           = $news['created_by'];
@@ -47,7 +47,7 @@ class m160103_185734_migrate_from_joomla extends Migration
             $newNews->unpublishDate     = $news['publish_down'];
             $newNews->checkedDate       = $news['checked_out_time'];
             $newNews->checked           = $news['checked_out'];
-            $newNews->image             = $newNews->imagePreview;
+            $newNews->image             = $newNews->getImagePreview();
 
             $newNews->save(false);
 
