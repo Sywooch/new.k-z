@@ -108,6 +108,10 @@ class SiteController extends Controller
         ]);
     }
 
+    public function actionImages($link){
+        return $this->redirect(\Yii::$app->params['imagesRoot'].'images/'.$link);
+    }
+
     public function actionCategory($link){
         $category = Category::findOne(['link' => $link]);
 
@@ -115,7 +119,9 @@ class SiteController extends Controller
             throw new NotFoundHttpException();
         }
 
-        return $this->renderContent("Category #{$category->id}");
+        return $this->render('category', [
+            'category'  =>  $category
+        ]);
     }
 
     /**
