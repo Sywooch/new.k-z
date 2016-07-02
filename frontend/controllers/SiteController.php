@@ -1,6 +1,9 @@
 <?php
 namespace frontend\controllers;
 
+use frontend\helpers\SelectedCategoriesHelper;
+use frontend\models\Category;
+use frontend\models\News;
 use Yii;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
@@ -72,7 +75,15 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $selectedCategories = Category::find()->where(['in', 'id', [34, 32, 35, 38, 44, 76]])->all();
+
+        return $this->render('index', [
+            'latestNews'    =>  News::find()->orderBy('publishTimestamp DESC')->limit(1)->one(),
+            'lastNews'      =>  News::getTop(9),
+            'favoriteNews'  =>  News::getFavorite(3),
+            'mediaPartners' =>  \frontend\models\Ads::byPosition("-1"),
+            'selectedCategories'    =>  SelectedCategoriesHelper::getWithColors($selectedCategories)
+        ]);
     }
 
     /**

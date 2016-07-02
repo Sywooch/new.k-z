@@ -7,35 +7,84 @@
  */
 
 namespace frontend\models;
+use yii\db\ActiveQuery;
 
 
 /**
  * @property string categorylink
+ * @property string fullLink
  */
 class News extends \common\models\News
 {
 
-    public static function getVideo(){
-        return self::getNews()
-            ->andWhere(['a.categoryID' => 'video'])
-            ->asArray()
-            ->limit(1)
-            ->orderBy('publishDate desc')
-            ->one();
+
+    /**
+     * @return ActiveQuery
+     */
+    public static function find(){
+        return parent::find()->andWhere(['published' => 1]);
     }
 
+    /**
+     * @param int $count
+     * @return News[]
+     */
+    public static function getPopular($count = 10){
+        return self::find()
+            ->with('category')
+            ->orderBy('hits DESC')
+            ->limit($count)
+            ->all();
+    }
+
+    /**
+     * @param int $count
+     * @return News[]
+     */
+    public static function getTop($count = 10){
+        return self::find()
+            ->with('category')
+            ->orderBy('publishTimestamp DESC')
+            ->limit($count)
+            ->all();
+    }
+    /**
+     * @param int $count
+     * @return News[]
+     */
+    public static function getFavorite($count){
+        return self::find()
+            ->with('category')
+            ->andWhere(['favorite'  =>  1])
+            ->orderBy('publishTimestamp DESC')
+            ->limit($count)
+            ->all();
+    }
+
+    /**
+     * @return ActiveQuery
+     */
     public function getCategory(){
         return $this->hasOne(Category::className(), ['id' => 'categoryID']);
     }
 
+    /**
+     * @return string
+     */
     public function getCategoryLink(){
         return $this->category->link;
     }
-    
+
+    /**
+     * @return string
+     */
     public function getFullLink(){
         return "/{$this->categorylink}/{$this->id}-{$this->link}";
     }
 
+    /**
+     * @return string
+     */
     public function getImagePreview(){
         $image = '';
         
@@ -48,6 +97,10 @@ class News extends \common\models\News
         return preg_match('/^http/', $image) ? $image : \Yii::$app->params['cdn'].$image;
     }
 
+    /**
+     * @param int $len
+     * @return string
+     */
     public function getTitle($len = 0){
         if($len == 0){
             return $this->title;
@@ -55,7 +108,11 @@ class News extends \common\models\News
 
         return strlen($this->title) > $len ? trim(mb_substr($this->title, 0, $len, 'UTF-8')).'…' : $this->title;
     }
-    
+
+    /**
+     * @param int $len
+     * @return string
+     */
     public function getTextPreview($len = 0){
         $preview = strip_tags($this->textPreview);
         
@@ -100,23 +157,16 @@ class News extends \common\models\News
         return News::getTopByCategory($category, $count, true)->limit($count)->offset($offset)->asArray()->all();
     }
 
-    public static function getPopular($count = 10){
-        return self::find()
-            ->with('category')
-            ->orderBy('hits DESC')
-            ->limit($count)
-            ->all();
-    }
-
-    public static function getTop($count = 10){
-        return self::find()
-            ->with('category')
-            ->orderBy('publishDate DESC')
-            ->limit($count)
-            ->all();
-    }
-
     public static function getRand($count){
         return News::getNews()->limit($count)->orderBy('RAND()')->asArray()->all();
+    }
+
+    public static function getVideo(){
+        return self::getNews()
+            ->andWhere(['a.categoryID' => 'video'])
+            ->asArray()
+            ->limit(1)
+            ->orderBy('publishDate desc')
+            ->one();
     }
 }

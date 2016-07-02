@@ -16,12 +16,19 @@ class Category extends \common\models\Category
         return Category::find()->where(['menu' => $type])->orderBy('menu_position')->all();
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
     public function getNews(){
         return $this->hasMany(News::className(), ['categoryID' => 'id']);
     }
 
+    /**
+     * @param int $count
+     * @return News[]
+     */
     public function getTopNews($count = 3){
-        return $this->getNews()->orderBy('publishDate DESC')->limit($count)->all();
+        return $this->getNews()->orderBy('publishTimestamp DESC')->limit($count)->all();
     }
 
 }

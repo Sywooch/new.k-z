@@ -1,7 +1,10 @@
 <?php
 use frontend\models\Category;
 
-$category = Category::findOne(['id' => $cat]);
+if(empty($category)){
+    $category = Category::findOne(['id' => $cat]);
+}
+
 $topNews = $category->getTopNews(4);
 $firstNews = $topNews[0];
 unset($topNews[0]);

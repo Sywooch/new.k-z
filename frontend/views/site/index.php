@@ -1,14 +1,75 @@
 <?php
-/* @var $this yii\web\View */
+/* @var $this yii\web\View
+ * @var News[] $favoriteNews
+ * @var News[] $lastNews
+ * @var News $latestNews
+ **/
 use frontend\models\Category;
 use frontend\models\News;
 use frontend\widgets\AdsSliderWidget;
 
 $this->title = 'юридический online журнал конфликтных правовых ситуаций';
+
+$js = <<<'JS'
+try {$Gavick;}catch(e){$Gavick = {};};
+$Gavick["nsp-nsp_157"] = {
+    "animation_speed": 400,
+    "animation_interval": 15000,
+    "animation_function": Fx.Transitions.Expo.easeIn,
+    "news_column": 1,
+    "news_rows": 1,
+    "links_columns_amount": 1,
+    "links_amount": 0,
+    "counter_text": '<strong>Page:</strong>'
+};
+JS;
+
+$this->registerJs($js);
+
 ?>
 
 <div id="mainContent" class="gkWrap clear">
     <div id="gkTop1" class="gkMain gkWrap">
+        <div id="gkToptop1" class="gkCol gkColLeft">
+            <div class="box nsp header">
+                <div>
+                    <div class="content">
+                        <div class="nspMain autoanim nspFs100 activated" id="nsp-nsp_157" style="width:100%;">
+                            <div class="nspArts right" style="width:100%;">
+                                <div class="nspTopInterface">
+                                    <div>
+                                        <ul class="nspPagination">
+                                            <li class="">1</li>
+                                            <li class="">2</li>
+                                            <li class="active">3</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div style="width: 512px; overflow: hidden;" class="nspArtScroll1">
+                                    <div style="width: 100000px;" class="nspArtScroll2">
+                                        <?php foreach($favoriteNews as $news){ ?>
+                                        <div style="width: 512px; float: left;" class="nspArtPage">
+                                            <div class="nspArt" style="width:100%!important;">
+                                                <div style="padding:0">
+                                                    <a href="<?=$news->fullLink?>">
+                                                        <img class="nspImage tleft fleft" src="<?=$news->imagePreview?>" alt="<?=$news->title?>" style="width:512px;height:285px;margin:60px 0 0 0;">
+                                                    </a>
+                                                    <h4 class="nspHeader tleft fnone">
+                                                        <a href="<?=$news->fullLink?>" title="<?=$news->title?>"><?=$news->title?></a>
+                                                        <p class="nspInfo  tleft fnone"><?=\Yii::$app->formatter->asDate($news->publishDate)?></p>
+                                                    </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <?php } ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div id="gkToptop2" class="gkCol gkColCenter">
             <div class="box nsp blue color_title small">
                 <div>
@@ -20,16 +81,13 @@ $this->title = 'юридический online журнал конфликтны�
                                         <div style="width: 198px; float: left;" class="nspArtPage">
                                             <div class="nspArt" style="width:100%!important;">
                                                 <div style="padding:0">
-                                                    <!--<a href="/dela-vsemyrnye/33950-rosiya-bilshe-ne-platit-kompensatsij-rodicham-zagiblikh-soldativ">
-                                                        <img class="nspImage tleft fleft" alt="Росія більше не платить компенсацій родичам загиблих солдатів" style="width:195px;height:98px;margin:0 0 7px 0;" src="http://k-z.com.ua/modules/mod_news_pro_gk4/cache/195x98xstories.dela-vsemirnye.oppozitsioner_yashinnsp_155.jpg.pagespeed.ic.RIcIo96PcP.jpg">
+                                                    <a href="<?=$latestNews->fullLink?>">
+                                                        <img class="nspImage tleft fleft" alt="<?=$latestNews->title?>" style="width:195px;height:98px;margin:0 0 7px 0;" src="<?=$latestNews->imagePreview?>">
                                                     </a>
                                                     <h4 class="nspHeader tleft fnone">
-                                                        <a href="/dela-vsemyrnye/33950-rosiya-bilshe-ne-platit-kompensatsij-rodicham-zagiblikh-soldativ" title="Росія більше не платить компенсацій родичам загиблих солдатів">Росія більше не платить…</a>
+                                                        <a href="<?=$latestNews->fullLink?>" title="<?=$latestNews->title?>"><?=$latestNews->getTitle(23)?></a>
                                                     </h4>
-                                                    <p class="nspText tleft fleft">
-                                                    &nbsp;
-                                                    У Росії родичам загиблих на Донбасі бійців перестали виплачувати компенсації. Як розповів в інтерв'ю ТСН опозиціонер Ілля Яшин, з початку року виплати не проводилися.
-                                                    «Ось уже в січні і лютому жодних виплат не проводилося зовсім, тому що ...</p>-->
+                                                    <p class="nspText tleft fleft"><?=$latestNews->getTextPreview(223)?></p>
                                                 </div>
                                             </div>
                                         </div>
@@ -53,7 +111,7 @@ $this->title = 'юридический online журнал конфликтны�
                                 <div style="width: 256px; overflow: hidden;" class="nspArtScroll1">
                                     <div style="width: 100000px;" class="nspArtScroll2">
                                         <div style="width: 256px; float: left;" class="nspArtPage">
-                                            <?php foreach(News::getTop(9) as $n){
+                                            <?php foreach($lastNews as $n){
                                                 echo $this->render('parts/_last_news', [
                                                     'news'  =>  $n
                                                 ]);
@@ -110,88 +168,49 @@ $this->title = 'юридический online журнал конфликтны�
                         <?=$this->render('parts/_index_left_categoryTopNews', [
                             'category'  =>  Category::findOne(['id' => '33']),
                             'color'     =>  'blue'
-                        ]).
+                        ]),
                         $this->render('parts/_index_left_categoryTopNews', [
                             'category'  =>  Category::findOne(['id' => '54']),
                             'color'     =>  'vmargin'
-                        ]).
+                        ]),
                         $this->render('parts/_index_left_categoryTopNews', [
                             'category'  =>  Category::findOne(['id' => '53']),
                             'color'     =>  'grey'
-                        ])?>
-                        <?php
-                        $mp = \frontend\models\Ads::byPosition("-1");
-                        if($mp){
-                            ?>
-                            <div class="box dotted">
-                                <div>
-                                    <h3 class="header">
-                                        <span>Медиа партнеры</span>
-                                    </h3>
-                                    <div class="content">
-                                        <!--<div class="custom dotted">
-                                            <table style="width: 205px; height: 213px;" bgcolor="#f5f5f5" border="0" cellpadding="0" cellspacing="0">
-                                                <tbody>
-                                                <tr style="background-color: #eeeeee;">
-                                                    <td style="text-align: center;" colspan="2" align="center"><br><noindex><a href="http://www.ukrpohliad.org/" target="blank"><img class="rdcmqnqdmxoepsxhuhoc" alt="ukrpohliad small" src="/images/stories/reklama/ukrpohliad_small.gif" height="31" width="88"></a><br><br><a href="http://job-sbu.org/" target="_blank"><img class="rdcmqnqdmxoepsxhuhoc" alt="job-sbu.100" src="http://k-z.com.ua/images/stories/reklama/100x100xjob-sbu.100.gif.pagespeed.ic.MI09pX0H-q.png" height="100" width="100"></a><br><br></noindex></td>
-                                                </tr>
-                                                </tbody>
-                                            </table>
-                                        </div>-->
-                                    </div>
+                        ]);
+                        
+                        if($mediaPartners){ ?>
+                        <div class="box dotted">
+                            <div>
+                                <h3 class="header">
+                                    <span>Медиа партнеры</span>
+                                </h3>
+                                <div class="content">
+                                    <!--<div class="custom dotted">
+                                        <table style="width: 205px; height: 213px;" bgcolor="#f5f5f5" border="0" cellpadding="0" cellspacing="0">
+                                            <tbody>
+                                            <tr style="background-color: #eeeeee;">
+                                                <td style="text-align: center;" colspan="2" align="center"><br><noindex><a href="http://www.ukrpohliad.org/" target="blank"><img class="rdcmqnqdmxoepsxhuhoc" alt="ukrpohliad small" src="/images/stories/reklama/ukrpohliad_small.gif" height="31" width="88"></a><br><br><a href="http://job-sbu.org/" target="_blank"><img class="rdcmqnqdmxoepsxhuhoc" alt="job-sbu.100" src="http://k-z.com.ua/images/stories/reklama/100x100xjob-sbu.100.gif.pagespeed.ic.MI09pX0H-q.png" height="100" width="100"></a><br><br></noindex></td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>-->
                                 </div>
                             </div>
+                        </div>
                         <?php } ?>
                     </div>
                     <div id="gkComponentWrap" class="gkMain gkCol gkPaddingL">
-                        <div class="box nsp no_vmargin">
+                        <?php /** @var array $selectedCategories */
+                    foreach($selectedCategories as $categoryArray){ ?>
+                        <div class="box nsp <?=$categoryArray['color']?> no_vmargin">
                             <div>
                                 <h3 class="header">
-                                    <span>Политика</span>
+                                    <span><?=$categoryArray['category']->title?></span>
                                 </h3>
-                                <?=$this->render('_four_news', [ 'cat' => 34])?>
+                                <?=$this->render('_four_news', ['category' => $categoryArray['category']])?>
                             </div>
                         </div>
-                        <div class="box nsp green no_vmargin">
-                            <div>
-                                <h3 class="header">
-                                    <span>Украина</span>
-                                </h3>
-                                <?=$this->render('_four_news', [ 'cat' => 32])?>
-                            </div>
-                        </div>
-                        <div class="box nsp grey no_vmargin">
-                            <div>
-                                <h3 class="header">
-                                    <span>Правовой акцент</span>
-                                </h3>
-                                <?=$this->render('_four_news', [ 'cat' => 35])?>
-                            </div>
-                        </div>
-                        <div class="box nsp green no_vmargin">
-                            <div>
-                                <h3 class="header">
-                                    <span>Судебные хроники</span>
-                                </h3>
-                                <?=$this->render('_four_news', [ 'cat' => 38])?>
-                            </div>
-                        </div>
-                        <div class="box nsp blue">
-                            <div>
-                                <h3 class="header">
-                                    <span>Киевские новости</span>
-                                </h3>
-                                <?=$this->render('_four_news', [ 'cat' => 44])?>
-                            </div>
-                        </div>
-                        <div class="box nsp no_vmargin">
-                            <div>
-                                <h3 class="header">
-                                    <span>Война в Крыму</span>
-                                </h3>
-                                <?=$this->render('_four_news', [ 'cat' => 76])?>
-                            </div>
-                        </div>
+                    <?php } ?>                        
                     </div>
                 </div>
                 <div id="gkContentBottom" class="gkMain">
@@ -428,6 +447,7 @@ $this->title = 'юридический online журнал конфликтны�
                 </div>
             </div>
         </div>
-    </div></div>
+    </div>
+</div>
 </div>
 

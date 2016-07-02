@@ -14,22 +14,7 @@ use yii\widgets\Breadcrumbs;
 $this->title = 'Конфликты и законы - '.$this->title;
 $this->registerLinkTag(['href' => '/images/favicon.ico', 'rel'  =>  'shortcut icon']);
 
-$ct = explode('/', \yii::$app->request->url)[1];
-
-$btmArticles = [
-    '1' => [
-        '1' =>  News::getTopByCategory('33'),
-        '2' =>  News::getTopByCategory('35'),
-        '3' =>  News::getTopByCategory('38'),
-        '4' =>  News::getTopByCategory('39'),
-    ],
-    '2' =>  [
-        '1' =>  News::getTopByCategory('45'),
-        '2' =>  News::getTopByCategory('46'),
-        '3' =>  News::getTopByCategory('47'),
-        '4' =>  News::getTopByCategory('48'),
-    ]
-];
+$ct = explode('/', \Yii::$app->request->url)[1];
 
 $this->registerJsFile('/js/mootools-core.js');
 $this->registerJsFile('/js/core.js');
@@ -87,7 +72,8 @@ AppAsset::register($this);
             Html::tag('div', '', ['id' => 'system-message-container']),
             $content,
             $this->render('_bottomMenu', [
-                'btmArticles'   =>  $btmArticles
+                'firstRowCategories'    => Category::find()->where(['in', 'id', [33, 35, 38,39]])->all(),
+                'secondRowCategories'   => Category::find()->where(['in', 'id', [45, 46, 47,48]])->all(),
             ]);
             $this->endBody() ?>
             <div id="gkFooter" class="gkWrap">
