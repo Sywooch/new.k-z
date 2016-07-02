@@ -2,6 +2,7 @@
 return [
     'enablePrettyUrl'   =>  true,
     'showScriptName'    =>  false,
+    'enableStrictParsing' => false,
     'rules' =>  [
         ''                              =>  'site/index',
         '/'                              =>  'site/index',
@@ -9,7 +10,10 @@ return [
         '<module:(rss)>'                      =>  '<module>/default/index',
         'rss/<id:(\w+)>-<link:(.*)>'    =>  'rss/default/feed',
         '<module:(rss)>/<action>'             =>  '<module>/default/<action>',
-        '<link:(.*)><id:(\/\d+)>-<newsLink:(.*)>'  =>  'site/news',
+        [
+            'pattern'   =>  '<link:(.*)><id:(\/\d+)>-<newsLink:(.*)>',
+            'route'     =>  'site/news',
+        ],
         '<link:(.*)>'                   =>  'site/category',
     ]
 ];
