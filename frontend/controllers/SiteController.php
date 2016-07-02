@@ -15,6 +15,7 @@ use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
@@ -84,6 +85,30 @@ class SiteController extends Controller
             'mediaPartners' =>  \frontend\models\Ads::byPosition("-1"),
             'selectedCategories'    =>  SelectedCategoriesHelper::getWithColors($selectedCategories)
         ]);
+    }
+
+    public function actionNews($id){
+        $news = News::findOne(filter_var($id, FILTER_SANITIZE_NUMBER_INT));
+
+        if(!$news){
+            throw new NotFoundHttpException();
+        }
+
+        if($news->fullLink != \Yii::$app->request->url){
+            return $this->redirect($news->fullLink);
+        }
+
+        return $this->renderContent("News #{$news->id}");
+    }
+
+    public function actionCategory($link){
+        $category = Category::findOne(['link' => $link]);
+
+        if(!$category){
+            throw new NotFoundHttpException();
+        }
+
+        return $this->renderContent("Category #{$category->id}");
     }
 
     /**

@@ -22,6 +22,8 @@ $Gavick["nsp-nsp_157"] = {
     "links_amount": 0,
     "counter_text": '<strong>Page:</strong>'
 };
+
+
 JS;
 
 $this->registerJs($js);
@@ -126,7 +128,7 @@ $this->registerJs($js);
             </div>
         </div>
     </div>
-    <div id="gkTop2" class="gkCol gkColFull">
+    <div id="gkTop2" class="gkMain gkWrap">
         <div class="box nsp grey dotted">
             <div>
                 <h3 class="header">
@@ -159,7 +161,6 @@ $this->registerJs($js);
             </div>
         </div>
     </div>
-
     <div id="gkMain">
         <div id="gkMainBlock" class="gkMain">
             <div id="gkContent" class="gkMain gkCol gkPaddingR">

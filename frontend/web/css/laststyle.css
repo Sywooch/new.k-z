@@ -1,14 +1,31 @@
-#gkInset1 { width: 33%; }
-#gkComponentWrap { width: 67%; }
-#gkRight { width: 28%; }
-#gkContent { width: 72%; }
-.gkWrap { width: 1000px!important; }
+#gkInset1 {
+    width: 33%;
+}
+
+#gkComponentWrap {
+    width: 67%;
+}
+
+#gkRight {
+    width: 28%;
+}
+
+#gkContent {
+    width: 72%;
+}
+
+.gkWrap {
+    width: 1000px !important;
+}
+
 body,
 #gkPage .box.small > div > h3.header,
 #gkPage .box_text.small > div > h3.header,
 #gkPage .box_menu.small > div > h3.header,
 #gkBottomWrap .box > div > h3.header,
-#gkPage .box.advert h3.advert { font-family: Arial, Helvetica, sans-serif; }
+#gkPage .box.advert h3.advert {
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 #gkMainMenu > div > ul > li > a,
 #gkPage .box > div > h3.header,
@@ -57,23 +74,61 @@ body #community-wrap ul#featurelist li,
 #community-wrap .joms-newsfeed-more,
 #cWindowAction .button,
 #community-wrap #cFeatured.forPeople .cFeatured-Name a,
-div.mobileSwitch > a { font-family: BebasNeue, Arial, sans-serif; }
+div.mobileSwitch > a {
+    font-family: BebasNeue, Arial, sans-serif;
+}
 
-#gkToptop1 { width: 54%; }
-#gkToptop2 { width: 23%; }
-#gkToptop3 { width: 23%; }
-#gkToptop7 { width: 100%; }
-#gkbottombottom1 { width: 25%; }
-#gkbottombottom2 { width: 25%; }
-#gkbottombottom3 { width: 25%; }
-#gkbottombottom4 { width: 25%; }
-#gkbottombottom7 { width: 25%; }
-#gkbottombottom8 { width: 25%; }
-#gkbottombottom9 { width: 25%; }
-#gkbottombottom10 { width: 25%; }
+#gkToptop1 {
+    width: 54%;
+}
+
+#gkToptop2 {
+    width: 23%;
+}
+
+#gkToptop3 {
+    width: 23%;
+}
+
+#gkToptop7 {
+    width: 100%;
+}
+
+#gkbottombottom1 {
+    width: 25%;
+}
+
+#gkbottombottom2 {
+    width: 25%;
+}
+
+#gkbottombottom3 {
+    width: 25%;
+}
+
+#gkbottombottom4 {
+    width: 25%;
+}
+
+#gkbottombottom7 {
+    width: 25%;
+}
+
+#gkbottombottom8 {
+    width: 25%;
+}
+
+#gkbottombottom9 {
+    width: 25%;
+}
+
+#gkbottombottom10 {
+    width: 25%;
+}
+
 div#poll_loading_23 {
     background: url(media/system/images/mootree_loader.gif) 0% 50% no-repeat;
-    width:100%;
-    height:20px;
+    width: 100%;
+    height: 20px;
     padding: 4px 0 0 20px;
 }

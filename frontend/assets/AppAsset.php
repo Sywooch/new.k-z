@@ -20,6 +20,7 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/menu.gkmenu.css',
         'css/reset.css',
+        'm2/css/template.css',
         'css/layout.css',
         'css/joomla.css',
         'css/template.css',
@@ -32,12 +33,18 @@ class AppAsset extends AssetBundle
         'css/style1.css',
         'fonts/BebasNeue/stylesheet.css',
         'm1/css/style.css',
-        'm2/css/template.css',
         'm3/gk_ajax_search.css',
         'm1/css/style.portal.mode.4.css',
-        'css/laststyle.css'
+        'css/laststyle.css',
+        'css/style.portal.mode.4.css'
     ];
     public $js = [
+        'js/mootools-core.js',
+        'js/core.js',
+        'js/caption.js',
+        'js/mootools-more.js',
+        'js/menu.gkmenu.js',
+        'js/gk.scripts.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

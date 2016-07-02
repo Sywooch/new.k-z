@@ -16,18 +16,9 @@ $this->registerLinkTag(['href' => '/images/favicon.ico', 'rel'  =>  'shortcut ic
 
 $ct = explode('/', \Yii::$app->request->url)[1];
 
-$this->registerJsFile('/js/mootools-core.js');
-$this->registerJsFile('/js/core.js');
-$this->registerJsFile('/js/caption.js');
-$this->registerJsFile('/js/mootools-more.js');
-$this->registerJsFile('/js/menu.gkmenu.js');
-$this->registerJsFile('/js/gk.scripts.js');
-
-$this->registerCssFile('/css/style.portal.mode.4.css');
-
 AppAsset::register($this);
-?>
-<?php $this->beginPage() ?>
+
+$this->beginPage() ?>
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
