@@ -7,12 +7,15 @@
  */
 
 namespace frontend\models;
+use backend\models\Siteuser;
 use yii\db\ActiveQuery;
 
 
 /**
  * @property string categorylink
  * @property string fullLink
+ * @property Siteuser author
+ * @property string imagePreview
  */
 class News extends \common\models\News
 {
@@ -66,6 +69,13 @@ class News extends \common\models\News
      */
     public function getCategory(){
         return $this->hasOne(Category::className(), ['id' => 'categoryID']);
+    }
+
+    /**
+     * @return ActiveQuery
+     */
+    public function getAuthor(){
+        return $this->hasOne(Siteuser::className(), ['id' => 'creator']);
     }
 
     /**

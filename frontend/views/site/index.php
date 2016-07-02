@@ -6,7 +6,6 @@
  **/
 use frontend\models\Category;
 use frontend\models\News;
-use frontend\widgets\AdsSliderWidget;
 
 $this->title = 'юридический online журнал конфликтных правовых ситуаций';
 
@@ -29,27 +28,25 @@ JS;
 $this->registerJs($js);
 
 ?>
-
-<div id="mainContent" class="gkWrap clear">
-    <div id="gkTop1" class="gkMain gkWrap">
-        <div id="gkToptop1" class="gkCol gkColLeft">
-            <div class="box nsp header">
-                <div>
-                    <div class="content">
-                        <div class="nspMain autoanim nspFs100 activated" id="nsp-nsp_157" style="width:100%;">
-                            <div class="nspArts right" style="width:100%;">
-                                <div class="nspTopInterface">
-                                    <div>
-                                        <ul class="nspPagination">
-                                            <li class="">1</li>
-                                            <li class="">2</li>
-                                            <li class="active">3</li>
-                                        </ul>
-                                    </div>
+<div id="gkTop1" class="gkMain gkWrap">
+    <div id="gkToptop1" class="gkCol gkColLeft">
+        <div class="box nsp header">
+            <div>
+                <div class="content">
+                    <div class="nspMain autoanim nspFs100 activated" id="nsp-nsp_157" style="width:100%;">
+                        <div class="nspArts right" style="width:100%;">
+                            <div class="nspTopInterface">
+                                <div>
+                                    <ul class="nspPagination">
+                                        <li class="">1</li>
+                                        <li class="">2</li>
+                                        <li class="active">3</li>
+                                    </ul>
                                 </div>
-                                <div style="width: 512px; overflow: hidden;" class="nspArtScroll1">
-                                    <div style="width: 100000px;" class="nspArtScroll2">
-                                        <?php foreach($favoriteNews as $news){ ?>
+                            </div>
+                            <div style="width: 512px; overflow: hidden;" class="nspArtScroll1">
+                                <div style="width: 100000px;" class="nspArtScroll2">
+                                    <?php foreach($favoriteNews as $news){ ?>
                                         <div style="width: 512px; float: left;" class="nspArtPage">
                                             <div class="nspArt" style="width:100%!important;">
                                                 <div style="padding:0">
@@ -63,8 +60,7 @@ $this->registerJs($js);
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php } ?>
-                                    </div>
+                                    <?php } ?>
                                 </div>
                             </div>
                         </div>
@@ -72,25 +68,25 @@ $this->registerJs($js);
                 </div>
             </div>
         </div>
-        <div id="gkToptop2" class="gkCol gkColCenter">
-            <div class="box nsp blue color_title small">
-                <div>
-                    <div class="content">
-                        <div class="nspMain nspFs100 activated" id="nsp-nsp_155" style="width:100%;">
-                            <div class="nspArts bottom" style="width:100%;">
-                                <div style="width: 198px; overflow: hidden;" class="nspArtScroll1">
-                                    <div style="width: 100000px;" class="nspArtScroll2">
-                                        <div style="width: 198px; float: left;" class="nspArtPage">
-                                            <div class="nspArt" style="width:100%!important;">
-                                                <div style="padding:0">
-                                                    <a href="<?=$latestNews->fullLink?>">
-                                                        <img class="nspImage tleft fleft" alt="<?=$latestNews->title?>" style="width:195px;height:98px;margin:0 0 7px 0;" src="<?=$latestNews->imagePreview?>">
-                                                    </a>
-                                                    <h4 class="nspHeader tleft fnone">
-                                                        <a href="<?=$latestNews->fullLink?>" title="<?=$latestNews->title?>"><?=$latestNews->getTitle(23)?></a>
-                                                    </h4>
-                                                    <p class="nspText tleft fleft"><?=$latestNews->getTextPreview(223)?></p>
-                                                </div>
+    </div>
+    <div id="gkToptop2" class="gkCol gkColCenter">
+        <div class="box nsp blue color_title small">
+            <div>
+                <div class="content">
+                    <div class="nspMain nspFs100 activated" id="nsp-nsp_155" style="width:100%;">
+                        <div class="nspArts bottom" style="width:100%;">
+                            <div style="width: 198px; overflow: hidden;" class="nspArtScroll1">
+                                <div style="width: 100000px;" class="nspArtScroll2">
+                                    <div style="width: 198px; float: left;" class="nspArtPage">
+                                        <div class="nspArt" style="width:100%!important;">
+                                            <div style="padding:0">
+                                                <a href="<?=$latestNews->fullLink?>">
+                                                    <img class="nspImage tleft fleft" alt="<?=$latestNews->title?>" style="width:195px;height:98px;margin:0 0 7px 0;" src="<?=$latestNews->imagePreview?>">
+                                                </a>
+                                                <h4 class="nspHeader tleft fnone">
+                                                    <a href="<?=$latestNews->fullLink?>" title="<?=$latestNews->title?>"><?=$latestNews->getTitle(23)?></a>
+                                                </h4>
+                                                <p class="nspText tleft fleft"><?=$latestNews->getTextPreview(223)?></p>
                                             </div>
                                         </div>
                                     </div>
@@ -101,85 +97,63 @@ $this->registerJs($js);
                 </div>
             </div>
         </div>
-        <div id="gkToptop3" class="gkCol gkColRight">
-            <div class="box nsp grey andrylik">
-                <div>
-                    <h3 class="header">
-                        <span>Последние новости</span>
-                    </h3>
-                    <div class="content">
-                        <div class="nspMain nspFs100 activated" id="nsp-nsp_216" style="width:100%;">
-                            <div class="nspArts bottom" style="width:100%;">
-                                <div style="width: 256px; overflow: hidden;" class="nspArtScroll1">
-                                    <div style="width: 100000px;" class="nspArtScroll2">
-                                        <div style="width: 256px; float: left;" class="nspArtPage">
-                                            <?php foreach($lastNews as $n){
-                                                echo $this->render('parts/_last_news', [
-                                                    'news'  =>  $n
-                                                ]);
-                                            } ?>
-                                        </div>
-                                    </div>
-                                </div>
+    </div>
+    <div id="gkToptop3" class="gkCol gkColRight">
+        <?=\frontend\widgets\LastNewsWidget::widget()?>
+    </div>
+</div>
+<div id="gkTop2" class="gkMain gkWrap">
+    <div class="box nsp grey dotted">
+        <div>
+            <h3 class="header">
+                <span>Новости дня</span>
+            </h3>
+            <div class="content">
+                <div class="nspMainPortalMode4 nspFs100" id="nsp-nsp_158">
+                    <div class="nspImages">
+                        <div class="nspArts">
+                            <div style="width: 1874px;" class="nspArtsScroll">
+                                <?php
+                                $first = true;
+                                foreach(News::getTop(12) as $n){
+                                    echo $this->render('parts/_day_news', [
+                                        'news'  =>  $n,
+                                        'first' =>  $first
+                                    ]);
+
+                                    if($first){
+                                        $first = false;
+                                    }
+                                } ?>
                             </div>
                         </div>
                     </div>
+                    <a class="nspPrev">Prev</a>
+                    <a class="nspNext">Next</a>
                 </div>
             </div>
         </div>
     </div>
-    <div id="gkTop2" class="gkMain gkWrap">
-        <div class="box nsp grey dotted">
-            <div>
-                <h3 class="header">
-                    <span>Новости дня</span>
-                </h3>
-                <div class="content">
-                    <div class="nspMainPortalMode4 nspFs100" id="nsp-nsp_158">
-                        <div class="nspImages">
-                            <div class="nspArts">
-                                <div style="width: 1874px;" class="nspArtsScroll">
-                                    <?php
-                                    $first = true;
-                                    foreach(News::getTop(12) as $n){                                    
-                                        echo $this->render('parts/_day_news', [
-                                            'news'  =>  $n,
-                                            'first' =>  $first
-                                        ]);
-                                        
-                                        if($first){
-                                            $first = false;
-                                        }
-                                    } ?>
-                                </div>
-                            </div>
-                        </div>
-                        <a class="nspPrev">Prev</a>
-                        <a class="nspNext">Next</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="gkMain">
-        <div id="gkMainBlock" class="gkMain">
-            <div id="gkContent" class="gkMain gkCol gkPaddingR">
-                <div id="gkContentMainbody" class="gkMain gkPaddingR">
-                    <div id="gkInset1" class="gkMain gkCol">
-                        <?=$this->render('parts/_index_left_categoryTopNews', [
-                            'category'  =>  Category::findOne(['id' => '33']),
-                            'color'     =>  'blue'
-                        ]),
-                        $this->render('parts/_index_left_categoryTopNews', [
-                            'category'  =>  Category::findOne(['id' => '54']),
-                            'color'     =>  'vmargin'
-                        ]),
-                        $this->render('parts/_index_left_categoryTopNews', [
-                            'category'  =>  Category::findOne(['id' => '53']),
-                            'color'     =>  'grey'
-                        ]);
-                        
-                        if($mediaPartners){ ?>
+</div>
+<div id="gkMain">
+    <div id="gkMainBlock" class="gkMain">
+        <div id="gkContent" class="gkMain gkCol gkPaddingR">
+            <div id="gkContentMainbody" class="gkMain gkPaddingR">
+                <div id="gkInset1" class="gkMain gkCol">
+                    <?=$this->render('parts/_index_left_categoryTopNews', [
+                        'category'  =>  Category::findOne(['id' => '33']),
+                        'color'     =>  'blue'
+                    ]),
+                    $this->render('parts/_index_left_categoryTopNews', [
+                        'category'  =>  Category::findOne(['id' => '54']),
+                        'color'     =>  'vmargin'
+                    ]),
+                    $this->render('parts/_index_left_categoryTopNews', [
+                        'category'  =>  Category::findOne(['id' => '53']),
+                        'color'     =>  'grey'
+                    ]);
+
+                    if($mediaPartners){ ?>
                         <div class="box dotted">
                             <div>
                                 <h3 class="header">
@@ -198,10 +172,10 @@ $this->registerJs($js);
                                 </div>
                             </div>
                         </div>
-                        <?php } ?>
-                    </div>
-                    <div id="gkComponentWrap" class="gkMain gkCol gkPaddingL">
-                        <?php /** @var array $selectedCategories */
+                    <?php } ?>
+                </div>
+                <div id="gkComponentWrap" class="gkMain gkCol gkPaddingL">
+                    <?php /** @var array $selectedCategories */
                     foreach($selectedCategories as $categoryArray){ ?>
                         <div class="box nsp <?=$categoryArray['color']?> no_vmargin">
                             <div>
@@ -211,16 +185,16 @@ $this->registerJs($js);
                                 <?=$this->render('_four_news', ['category' => $categoryArray['category']])?>
                             </div>
                         </div>
-                    <?php } ?>                        
-                    </div>
+                    <?php } ?>
                 </div>
-                <div id="gkContentBottom" class="gkMain">
-                    <div class="box">
-                        <div>
-                            <div class="content">
-                                <div class="bannergroup">
-                                    <div class="banneritem">
-                                        <?php /*
+            </div>
+            <div id="gkContentBottom" class="gkMain">
+                <div class="box">
+                    <div>
+                        <div class="content">
+                            <div class="bannergroup">
+                                <div class="banneritem">
+                                    <?php /*
                                                 <!-- Job.Ukr.Net -->
                                                 <style>.job-block a,.job-block a:hover{font-family:Arial,sans-serif;font-size:12px;color:#000;font-weight:bold;text-decoration:none}.job-block{background:#eee url(http://informers.ukr.net/job/sim/jobnewimg/bottom-bg.gif) repeat-x bottom;border:1px solid #c9c9c9;margin:auto auto 20px;width:690px;border-radius:5px;box-shadow:0 0 3px #999}.job-block .job-ttl{background:url(http://informers.ukr.net/job/sim/jobnewimg/ttl-bg.gif) repeat-x top;position:relative;padding:5px 105px 5px 12px;border-bottom:1px solid #c9c9c9;text-align:left;border-radius:5px 5px 0 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.job-block .job-ttl a{font-family:Tahoma,sans-serif;text-transform:uppercase}.job-logo-link{position:absolute;top:4px;right:5px;width:103px;height:22px}.job-logo-link a{display:block;width:103px;height:22px;_background:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader (src='http://informers.ukr.net/job/sim/jobnewimg/job-logo-medium.png',sizingMethod='scale');cursor:pointer;position:static!important}.job-logo-link img{_display:none;border:none}.job-block .informer-block{padding:3px}#jobukrnet ul{list-style:none;margin:0;padding:0 0 0 0;background:#fff;zoom:1}#jobukrnet ul:after,#jobukrnet ul:before{content:"";display:table;height:0}#jobukrnet ul:after{clear:both}#jobukrnet li{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-bottom:1px solid #e3e3e3;padding:4px 0;margin:0 4px;line-height:normal;background:none;float:left;width:332px}#jobukrnet a{margin:0 3px}#jobukrnet span{color:#006fce;font-weight:bold;float:right;margin-right:5px;letter-spacing:-1px}.job-block .bottom-link-1,.job-block .bottom-link-2,.job-block .bottom-link-3{border-left:1px solid #fff;margin:4px 0 0!important;padding:2px 22px 2px 3px!important;background:url(http://informers.ukr.net/job/sim/jobnewimg/bottom-links/link-back-1000px.png) no-repeat right 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}</style>
                                                 <div class="job-block">
@@ -234,18 +208,18 @@ $this->registerJs($js);
                                                 </div>
                                                 <!-- Job.Ukr.Net -->
                                                 */ ?>
-                                        <div class="clr"></div>
-                                    </div>
+                                    <div class="clr"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="box">
-                        <div>
-                            <div class="content">
-                                <div class="bannergroup">
-                                    <div class="banneritem">
-                                        <?php /*
+                </div>
+                <div class="box">
+                    <div>
+                        <div class="content">
+                            <div class="bannergroup">
+                                <div class="banneritem">
+                                    <?php /*
                                                 <!-- Kino.Ukr.Net -->
                                                 <style>.kino{border:1px solid #c00;margin-top:11px}.kino .kinottl{background:#c00;padding-bottom:2px;text-align:center}.kino .kinottl a{color:#fff;font-weight:bold;text-decoration:none}#kinoukrnet{margin:5px 0;overflow:hidden;zoom:1}#kinoukrnet ul{margin:0;padding:0;list-style:none}#kinoukrnet li{margin-bottom:7px;float:left;width:23%;*width:22.9%}#kinoukrnet img{margin-right:7px}#kinoukrnet a{font-size:11px;font-weight:normal!important}</style>
                                                 <div class="kino">
@@ -256,45 +230,44 @@ $this->registerJs($js);
                                                 </div>
                                                 <!-- Kino.Ukr.Net -->
                                                 */ ?>
-                                        <div class="clr"></div>
-                                    </div>
+                                    <div class="clr"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div id="gkRight" class="gkMain gkCol">
-                <div id="gkRightTop" class="gkMain">
-                    <div class="box dark">
-                        <div>
-                            <div class="content">
-                                <div class="nspMain nspFs100 activated" id="nsp-nsp_200" style="width:100%;">
-                                    <div class="nspArts bottom" style="width:100%;">
-                                        <div style="width: 256px; overflow: hidden;" class="nspArtScroll1">
-                                            <div style="width: 100000px;" class="nspArtScroll2">
-                                                <div style="width: 256px; float: left;" class="nspArtPage">
-                                                    <div class="nspArt" style="width:100%!important;">
-                                                        <div style="padding:0">
-                                                            <p class="nspText tleft fleft">
+        </div>
+        <div id="gkRight" class="gkMain gkCol">
+            <div id="gkRightTop" class="gkMain">
+                <div class="box dark">
+                    <div>
+                        <div class="content">
+                            <div class="nspMain nspFs100 activated" id="nsp-nsp_200" style="width:100%;">
+                                <div class="nspArts bottom" style="width:100%;">
+                                    <div style="width: 256px; overflow: hidden;" class="nspArtScroll1">
+                                        <div style="width: 100000px;" class="nspArtScroll2">
+                                            <div style="width: 256px; float: left;" class="nspArtPage">
+                                                <div class="nspArt" style="width:100%!important;">
+                                                    <div style="padding:0">
+                                                        <p class="nspText tleft fleft">
 
-                                                                <!-- JoomlaWorks "AllVideos" Plugin (v4.2) starts here -->
+                                                            <!-- JoomlaWorks "AllVideos" Plugin (v4.2) starts here -->
 
-                                                            </p>
-                                                            <div class="avPlayerWrapper avVideo">
-                                                                <div style="width:240px;" class="avPlayerContainer">
-                                                                    <div id="AVPlayerID_810c409a_1575632910" class="avPlayerBlock">
-                                                                        <iframe src="http://www.youtube.com/embed/mlTiYjY2njY?rel=0&amp;fs=1&amp;wmode=transparent" allowfullscreen="" title="JoomlaWorks AllVideos Player" frameborder="0" height="150" width="240"></iframe>
-                                                                    </div>
+                                                        </p>
+                                                        <div class="avPlayerWrapper avVideo">
+                                                            <div style="width:240px;" class="avPlayerContainer">
+                                                                <div id="AVPlayerID_810c409a_1575632910" class="avPlayerBlock">
+                                                                    <iframe src="http://www.youtube.com/embed/mlTiYjY2njY?rel=0&amp;fs=1&amp;wmode=transparent" allowfullscreen="" title="JoomlaWorks AllVideos Player" frameborder="0" height="150" width="240"></iframe>
                                                                 </div>
                                                             </div>
-
-                                                            <!-- JoomlaWorks "AllVideos" Plugin (v4.2) ends here -->
-
-                                                            Свободівець Левченко звернувся до Яценюка як до пустого місця
-                                                            <p></p>
-                                                            <a class="readon  fright" href="/vydeo/33948-svobodivets-levchenko-zvernuvsya-do-yatsenyuka-yak-do-pustogo-mistsya">Подробнее</a>
                                                         </div>
+
+                                                        <!-- JoomlaWorks "AllVideos" Plugin (v4.2) ends here -->
+
+                                                        Свободівець Левченко звернувся до Яценюка як до пустого місця
+                                                        <p></p>
+                                                        <a class="readon  fright" href="/vydeo/33948-svobodivets-levchenko-zvernuvsya-do-yatsenyuka-yak-do-pustogo-mistsya">Подробнее</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -304,26 +277,26 @@ $this->registerJs($js);
                             </div>
                         </div>
                     </div>
-                    <div class="box nsp blue sidebar">
-                        <div>
-                            <h3 class="header">
-                                <span>Популярное</span>
-                            </h3>
-                            <div class="content">
-                                <div class="nspMain autoanim hover nspFs100 activated" id="nsp-nsp_162" style="width:100%;">
-                                    <div class="nspArts bottom" style="width:100%;">
+                </div>
+                <div class="box nsp blue sidebar">
+                    <div>
+                        <h3 class="header">
+                            <span>Популярное</span>
+                        </h3>
+                        <div class="content">
+                            <div class="nspMain autoanim hover nspFs100 activated" id="nsp-nsp_162" style="width:100%;">
+                                <div class="nspArts bottom" style="width:100%;">
 
-                                        <div style="width: 256px; overflow: hidden;" class="nspArtScroll1">
-                                            <div style="width: 100000px;" class="nspArtScroll2">
-                                                <div style="width: 256px; float: left;" class="nspArtPage">
-                                                    <?php
-                                                    foreach(News::getPopular(9) as $popularNews){
-                                                        echo $this->render('parts/_popular_news_item', [
-                                                            'news'  =>  $popularNews
-                                                        ]);
-                                                    }
-                                                    ?>
-                                                </div>
+                                    <div style="width: 256px; overflow: hidden;" class="nspArtScroll1">
+                                        <div style="width: 100000px;" class="nspArtScroll2">
+                                            <div style="width: 256px; float: left;" class="nspArtPage">
+                                                <?php
+                                                foreach(News::getPopular(9) as $popularNews){
+                                                    echo $this->render('parts/_popular_news_item', [
+                                                        'news'  =>  $popularNews
+                                                    ]);
+                                                }
+                                                ?>
                                             </div>
                                         </div>
                                     </div>
@@ -331,83 +304,84 @@ $this->registerJs($js);
                             </div>
                         </div>
                     </div>
-                    <div class="box nsp" style="min-height: 100px; margin-top: 8px;">
-                        <script type="text/javascript" src="//vk.com/js/api/openapi.js?98"></script>
-                        <!-- VK Widget -->
-                        <div style="height: 140px; width: 256px; background: transparent none repeat scroll 0% 0%;" id="vk_groups"><iframe style="overflow: hidden; height: 140px;" id="vkwidget1" scrolling="no" src="http://vk.com/widget_community.php?app=0&amp;width=256px&amp;_ver=1&amp;gid=56660615&amp;mode=1&amp;color1=FFFFFF&amp;color2=2B587A&amp;color3=5B7FA6&amp;class_name=&amp;height=280&amp;url=http%3A%2F%2Fk-z.com.ua%2F&amp;14ca7a2bfd5" name="fXD75a72" frameborder="0" height="200" width="256"></iframe></div>
-                        <script type="text/javascript">VK.Widgets.Group("vk_groups",{mode:1,width:"256",height:"280",color1:'FFFFFF',color2:'2B587A',color3:'5B7FA6'},56660615);</script>
-                    </div>
-                    <div class="box nsp" style="min-height: 100px; margin-top: 8px; max-height: 300px;">
-                        <div fb-iframe-plugin-query="app_id=171342606239806&amp;container_width=0&amp;header=true&amp;href=https%3A%2F%2Fwww.facebook.com%2Fkonfliktyizakony&amp;locale=ru_RU&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=255" fb-xfbml-state="rendered" class="fb-like-box fb_iframe_widget" data-href="https://www.facebook.com/konfliktyizakony" width="255px" data-width="280" data-show-faces="true" data-header="true" data-stream="false" data-show-border="false">
+                </div>
+                <div class="box nsp" style="min-height: 100px; margin-top: 8px;">
+                    <script type="text/javascript" src="//vk.com/js/api/openapi.js?98"></script>
+                    <!-- VK Widget -->
+                    <div style="height: 140px; width: 256px; background: transparent none repeat scroll 0% 0%;" id="vk_groups"><iframe style="overflow: hidden; height: 140px;" id="vkwidget1" scrolling="no" src="http://vk.com/widget_community.php?app=0&amp;width=256px&amp;_ver=1&amp;gid=56660615&amp;mode=1&amp;color1=FFFFFF&amp;color2=2B587A&amp;color3=5B7FA6&amp;class_name=&amp;height=280&amp;url=http%3A%2F%2Fk-z.com.ua%2F&amp;14ca7a2bfd5" name="fXD75a72" frameborder="0" height="200" width="256"></iframe></div>
+                    <script type="text/javascript">VK.Widgets.Group("vk_groups",{mode:1,width:"256",height:"280",color1:'FFFFFF',color2:'2B587A',color3:'5B7FA6'},56660615);</script>
+                </div>
+                <div class="box nsp" style="min-height: 100px; margin-top: 8px; max-height: 300px;">
+                    <div fb-iframe-plugin-query="app_id=171342606239806&amp;container_width=0&amp;header=true&amp;href=https%3A%2F%2Fwww.facebook.com%2Fkonfliktyizakony&amp;locale=ru_RU&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=255" fb-xfbml-state="rendered" class="fb-like-box fb_iframe_widget" data-href="https://www.facebook.com/konfliktyizakony" width="255px" data-width="280" data-show-faces="true" data-header="true" data-stream="false" data-show-border="false">
                                         <span style="vertical-align: bottom; width: 255px; height: 271px;">
                                             <iframe class="" src="http://www.facebook.com/plugins/like_box.php?app_id=171342606239806&amp;channel=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter%2F6Dg4oLkBbYq.js%3Fversion%3D41%23cb%3Df16a2936cdcec7a%26domain%3Dk-z.com.ua%26origin%3Dhttp%253A%252F%252Fk-z.com.ua%252Ffc1bf6d314134e%26relation%3Dparent.parent&amp;container_width=0&amp;header=true&amp;href=https%3A%2F%2Fwww.facebook.com%2Fkonfliktyizakony&amp;locale=ru_RU&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=255" style="border: medium none; visibility: visible; width: 255px; height: 271px;" title="fb:like_box Facebook Social Plugin" scrolling="no" allowtransparency="true" name="f1247c7ce4cb5b8" frameborder="0" height="1000px" width="255px"></iframe>
                                         </span>
+                    </div>
+                </div>
+            </div>
+            <div id="gkRightBottom" class="gkMain">
+                <div class="box">
+                    <div>
+                        <h3 class="header"><span>Опрос</span></h3>
+                        <div class="content">
+                            <div class="poll" style="border:none; padding:1px;">
+                                <h4> Как Вы относитесь к передаче особого статуса Донбассу?</h4>
+                                <div id="polldiv_24">
+                                    <form action="/" method="post" name="poll_vote_24" id="poll_vote_24">
+                                        <label for="mod_voteid103" class="sectiontableentry2" style="display:block; padding:2px;">
+                                            <input name="voteid" id="mod_voteid103" value="103" alt="103" type="radio">
+                                            Донбассу не нужен особый статус	</label>
+                                        <label for="mod_voteid104" class="sectiontableentry1" style="display:block; padding:2px;">
+                                            <input name="voteid" id="mod_voteid104" value="104" alt="104" type="radio">
+                                            Выполнить все по Закону	</label>
+                                        <label for="mod_voteid105" class="sectiontableentry2" style="display:block; padding:2px;">
+                                            <input name="voteid" id="mod_voteid105" value="105" alt="105" type="radio">
+                                            Особый статус - предательство Украины	</label>
+                                        <label for="mod_voteid106" class="sectiontableentry1" style="display:block; padding:2px;">
+                                            <input name="voteid" id="mod_voteid106" value="106" alt="106" type="radio">
+                                            Затрудняюсь ответить	</label>
+                                        <label for="mod_voteid107" class="sectiontableentry2" style="display:block; padding:2px;">
+                                            <input name="voteid" id="mod_voteid107" value="107" alt="107" type="radio">
+                                            Мне все равно	</label>
+                                        <div style="padding:2px;" id="poll_buttons_24">
+                                            <input id="submit_vote_24" name="task_button" class="button" value="Голосовать" type="submit">
+                                        </div>
+                                        <div id="poll_loading_24" style="display:none;">Processing....	</div>
+                                        <input name="option" value="com_acepolls" type="hidden">
+                                        <input name="id" value="24" type="hidden">
+                                        <input name="task" value="vote" type="hidden">
+                                        <div>
+                                            <input name="fa25882480b02b7c94ca8b95bfedccee" value="1" type="hidden">
+                                        </div>
+                                    </form>
+                                    <!-- End of #polldiv -->
+                                </div>
+                                <div id="poll_links" style="padding-top:5px; ">
+                                    <a class="poll_result_link" href="/component/acepolls/poll/24-kak-vy-otnosites-k-peredache-osobogo-statusa-donbassu">Подробнее</a><br>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div id="gkRightBottom" class="gkMain">
-                    <div class="box">
-                        <div>
-                            <h3 class="header"><span>Опрос</span></h3>
-                            <div class="content">
-                                <div class="poll" style="border:none; padding:1px;">
-                                    <h4> Как Вы относитесь к передаче особого статуса Донбассу?</h4>
-                                    <div id="polldiv_24">
-                                        <form action="/" method="post" name="poll_vote_24" id="poll_vote_24">
-                                            <label for="mod_voteid103" class="sectiontableentry2" style="display:block; padding:2px;">
-                                                <input name="voteid" id="mod_voteid103" value="103" alt="103" type="radio">
-                                                Донбассу не нужен особый статус	</label>
-                                            <label for="mod_voteid104" class="sectiontableentry1" style="display:block; padding:2px;">
-                                                <input name="voteid" id="mod_voteid104" value="104" alt="104" type="radio">
-                                                Выполнить все по Закону	</label>
-                                            <label for="mod_voteid105" class="sectiontableentry2" style="display:block; padding:2px;">
-                                                <input name="voteid" id="mod_voteid105" value="105" alt="105" type="radio">
-                                                Особый статус - предательство Украины	</label>
-                                            <label for="mod_voteid106" class="sectiontableentry1" style="display:block; padding:2px;">
-                                                <input name="voteid" id="mod_voteid106" value="106" alt="106" type="radio">
-                                                Затрудняюсь ответить	</label>
-                                            <label for="mod_voteid107" class="sectiontableentry2" style="display:block; padding:2px;">
-                                                <input name="voteid" id="mod_voteid107" value="107" alt="107" type="radio">
-                                                Мне все равно	</label>
-                                            <div style="padding:2px;" id="poll_buttons_24">
-                                                <input id="submit_vote_24" name="task_button" class="button" value="Голосовать" type="submit">
-                                            </div>
-                                            <div id="poll_loading_24" style="display:none;">Processing....	</div>
-                                            <input name="option" value="com_acepolls" type="hidden">
-                                            <input name="id" value="24" type="hidden">
-                                            <input name="task" value="vote" type="hidden">
-                                            <div>
-                                                <input name="fa25882480b02b7c94ca8b95bfedccee" value="1" type="hidden">
-                                            </div>
-                                        </form>
-                                        <!-- End of #polldiv -->
-                                    </div>
-                                    <div id="poll_links" style="padding-top:5px; ">
-                                        <a class="poll_result_link" href="/component/acepolls/poll/24-kak-vy-otnosites-k-peredache-osobogo-statusa-donbassu">Подробнее</a><br>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div>
-                            <div class="content">
-                                <div class="bannergroup">
-                                    <div class="banneritem">
-                                        <?php /*
+                <div class="box">
+                    <div>
+                        <div class="content">
+                            <div class="bannergroup">
+                                <div class="banneritem">
+                                    <?php /*
                                                     <script type="text/javascript" src="http://s0.evroreklama.com/script/3470184544.js"></script><script type="text/javascript" language="javascript" src="http://pagead2.googlesyndication.com/pagead/show_ads.js"></script>				<div class="clr"></div>
                                                     */ ?>
-                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="box">
-                        <div>
-                            <div class="content">
-                                <div class="bannergroup">
-                                    <div class="banneritem">
-                                        <?php /*
+                </div>
+                <div class="box">
+                    <div>
+                        <div class="content">
+                            <div class="bannergroup">
+                                <div class="banneritem">
+                                    <?php /*
                                                        <!-- Afisha.Ukr.Net -->
                                                        <style>.afisha{border:1px solid #c00;margin-top:11px}.afisha .afishattl{background:#c00;padding-bottom:2px;text-align:center}.afisha .afishattl a{color:#fff;font-weight:bold;text-decoration:none}#kinomovieukrnet{margin:0}#kinomovieukrnet table{width:100%}#kinomovieukrnet td{text-align:center}#kinomovieukrnet a{font-weight:bold;font-size:12px}#kinomovieukrnet ul{margin:0;padding:0;list-style:none;text-align:center}</style>
                                                        <div class="afisha">
@@ -418,18 +392,18 @@ $this->registerJs($js);
                                                        </div>
                                                        <!-- Afisha.Ukr.Net -->
                                                        */ ?>
-                                        <div class="clr"></div>
-                                    </div>
+                                    <div class="clr"></div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="box">
-                        <div>
-                            <div class="content">
-                                <div class="bannergroup">
-                                    <div class="banneritem">
-                                        <?php /*
+                </div>
+                <div class="box">
+                    <div>
+                        <div class="content">
+                            <div class="bannergroup">
+                                <div class="banneritem">
+                                    <?php /*
                                                     <!-- Testoteka.Ukr.Net -->
                                                     <style>.tests{border:1px solid #c00;margin-top:11px;margin-bottom:11px}.tests .teststtl{background:#c00;padding-bottom:2px;text-align:center}.tests .teststtl a{color:#fff;font-weight:bold;text-decoration:none}#testotekaukrnet ul{margin:5px 0px;padding:0;list-style:none;text-align:center}#testotekaukrnet li{margin:0;padding:0;list-style:none;margin-bottom:7px}#testotekaukrnet img{margin:0}#testotekaukrnet a{}</style>
                                                     <div class="tests">
@@ -439,8 +413,7 @@ $this->registerJs($js);
 
                                                         <div style="margin:5px 0;" align="center"><a href="http://job.ukr.net/vacancy/rabota-na-domu/kiev/" style="color:#cc0000;text-decoration:none;" target="_blank"><b>-=работа на дому=-</b></a></div>
                                                     </div>			*/?>
-                                        <div class="clr"></div>
-                                    </div>
+                                    <div class="clr"></div>
                                 </div>
                             </div>
                         </div>
@@ -449,6 +422,5 @@ $this->registerJs($js);
             </div>
         </div>
     </div>
-</div>
-</div>
+</div></div>
 

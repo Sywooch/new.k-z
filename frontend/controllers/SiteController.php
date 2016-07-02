@@ -69,6 +69,10 @@ class SiteController extends Controller
         ];
     }
 
+    public function actionHome(){
+        return $this->redirect($this->goHome());
+    }
+
     /**
      * Displays homepage.
      *
@@ -78,9 +82,10 @@ class SiteController extends Controller
     {
         $selectedCategories = Category::find()->where(['in', 'id', [34, 32, 35, 38, 44, 76]])->all();
 
+        $this->layout = 'index';
+
         return $this->render('index', [
-            'latestNews'    =>  News::find()->orderBy('publishTimestamp DESC')->limit(1)->one(),
-            'lastNews'      =>  News::getTop(9),
+            'latestNews'    =>  News::find()->with('category')->orderBy('publishTimestamp DESC')->limit(1)->one(),
             'favoriteNews'  =>  News::getFavorite(3),
             'mediaPartners' =>  \frontend\models\Ads::byPosition("-1"),
             'selectedCategories'    =>  SelectedCategoriesHelper::getWithColors($selectedCategories)
@@ -88,7 +93,7 @@ class SiteController extends Controller
     }
 
     public function actionNews($id){
-        $news = News::findOne(filter_var($id, FILTER_SANITIZE_NUMBER_INT));
+        $news = News::find()->where(['id' => filter_var($id, FILTER_SANITIZE_NUMBER_INT)])->with('author')->one();
 
         if(!$news){
             throw new NotFoundHttpException();
@@ -98,7 +103,9 @@ class SiteController extends Controller
             return $this->redirect($news->fullLink);
         }
 
-        return $this->renderContent("News #{$news->id}");
+        return $this->render('article', [
+            'article'   =>  $news
+        ]);
     }
 
     public function actionCategory($link){
