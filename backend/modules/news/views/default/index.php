@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]));
                     }
                 ],
-                'category',
+                'categoryID',
                 'author',
                 [
                     'attribute' =>  'publishDate',
