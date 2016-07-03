@@ -16,7 +16,7 @@ class m151124_222808_initial extends Migration
             'id'        =>  Schema::TYPE_BIGINT.' UNSIGNED PRIMARY KEY AUTO_INCREMENT',
             'author'    =>  Schema::TYPE_INTEGER.' UNSIGNED NOT NULL',
             'title'     =>  Schema::TYPE_TEXT,
-            'text'      =>  $this->text(),
+            'text'      =>  "LONGTEXT",
             'link'      =>  Schema::TYPE_STRING.' DEFAULT NULL',
             'image'     =>  Schema::TYPE_STRING.' DEFAULT NULL',
             'published' =>  Schema::TYPE_SMALLINT.' UNSIGNED DEFAULT 0',
