@@ -6,8 +6,8 @@ class m160702_081651_change_publishDate extends Migration
 {
     public function up()
     {
-        //$this->addColumn('news', 'publishTimestamp', $this->integer()->unsigned()->notNull());
-        //$this->createIndex('publishTimestamp', 'news', 'publishTimestamp');
+        $this->addColumn('news', 'publishTimestamp', $this->integer()->unsigned()->notNull());
+        $this->createIndex('publishTimestamp', 'news', 'publishTimestamp');
 
         $this->execute("UPDATE `news` SET `publishTimestamp` = UNIX_TIMESTAMP(STR_TO_DATE(`publishDate`, '%Y-%m-%d %H:%i:%s'))");
     }
