@@ -2,7 +2,7 @@
 
 namespace frontend\modules\rss\controllers;
 
-use common\models\NewsFeed;
+use frontend\models\NewsFeed;
 use yii\data\ActiveDataProvider;
 use yii\helpers\StringHelper;
 use yii\helpers\Url;
@@ -23,7 +23,7 @@ class DefaultController extends Controller
     {
         return $this->render('index', [
             'dataProvider'  =>  new ActiveDataProvider([
-                'query' =>  NewsFeed::find()->where(['published' => 1])
+                'query' =>  NewsFeed::find()->where(['published' => 1]),
             ])
         ]);
     }
@@ -46,7 +46,15 @@ class DefaultController extends Controller
 
         echo RssView::widget([
             'dataProvider'  => new ActiveDataProvider([
-                'query' =>  $newsFeed->getNews()
+                'query' =>  $newsFeed->getNews(),
+                'sort'  =>  [
+                    'defaultOrder'  =>  [
+                        'publishTimestamp'  =>  SORT_DESC
+                    ]
+                ],
+                'pagination'    =>  [
+                    'pageSize'  =>  array_key_exists('feedLength', $newsFeed->params) ? $newsFeed->params['feedLength'] : 30
+                ]
             ]),
             'channel'       => [
                 'title' => function ($widget, \Zelenin\Feed $feed) use(&$newsFeed){
@@ -65,13 +73,17 @@ class DefaultController extends Controller
                 'title' => function ($model, $widget, \Zelenin\Feed $feed) {
                     return $model->title;
                 },
-                'description' => function ($model, $widget, \Zelenin\Feed $feed) {
-                    return '';
-                    return StringHelper::truncateWords($model->content, 50);
+                'description' => function ($model, $widget, \Zelenin\Feed $feed) use(&$newsFeed) {
+                    $text = $model->textPreview;
+
+                    if(array_key_exists('hideImages', $newsFeed->params) && $newsFeed->params['hideImages'] == 1){
+                        $text = strip_tags($text, 'a');
+                    }
+
+                    return StringHelper::truncateWords($text, 50);
                 },
                 'link' => function ($model, $widget, \Zelenin\Feed $feed) {
-                    return '';
-                    return Url::toRoute(['post/view', 'id' => $model->id], true);
+                    return Url::toRoute([$model->fullLink], true);
                 },
                 'author' => function ($model, $widget, \Zelenin\Feed $feed) {
                     return '';
@@ -83,8 +95,7 @@ class DefaultController extends Controller
                     return Url::toRoute(['post/view', 'id' => $model->id], true) . ' ' . $date->format(DATE_RSS);
                 },
                 'pubDate' => function ($model, $widget, \Zelenin\Feed $feed) {
-                    return '';
-                    $date = \DateTime::createFromFormat('Y-m-d H:i:s', $model->updated_at);
+                    $date = \DateTime::createFromFormat('Y-m-d H:i:s', $model->publishDate);
                     return $date->format(DATE_RSS);
                 }
             ]
