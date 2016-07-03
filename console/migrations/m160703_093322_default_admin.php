@@ -10,7 +10,7 @@ class m160703_093322_default_admin extends Migration
             'username'  =>  'admin',
             'auth_key'  =>  '',
             'email'     =>  '',
-            'updated_at'     =>  '',
+            'updated_at'     =>  date('Y-m-d H:i:s'),
         ]);
 
         $admin->setPassword('defaultPassword');
