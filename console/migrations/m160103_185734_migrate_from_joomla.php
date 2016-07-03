@@ -12,7 +12,7 @@ class m160103_185734_migrate_from_joomla extends Migration
         $this->addColumn('news', 'checkedDate', Schema::TYPE_DATETIME);
         $this->addColumn('news', 'checked', Schema::TYPE_INTEGER.' UNSIGNED NOT NULL DEFAULT 0');
         $this->addColumn('news', 'creator', Schema::TYPE_INTEGER.' UNSIGNED NOT NULL DEFAULT 0');
-        $this->addColumn('news', 'textPreview', Schema::TYPE_TEXT);
+        $this->addColumn('news', 'textPreview', $this->text());
 
         $this->alterColumn('news', 'author', Schema::TYPE_STRING);
 
