@@ -7,7 +7,8 @@ class m160703_093322_default_admin extends Migration
     public function up()
     {
         $admin = new \backend\models\Siteuser([
-            'username'  =>  'admin'
+            'username'  =>  'admin',
+            'auth_key'  =>  '',
         ]);
 
         $admin->setPassword('defaultPassword');
