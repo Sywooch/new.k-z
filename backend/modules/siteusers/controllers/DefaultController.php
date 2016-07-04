@@ -41,14 +41,11 @@ class DefaultController extends Controller
         ];
     }
 
-    public function actionIndex()
-    {
-        $siteusersDataProvider = new ActiveDataProvider([
-            'query' =>  Siteuser::find()
-        ]);
-
+    public function actionIndex(){
         return $this->render('index', [
-            'siteusersDataProvider' =>  $siteusersDataProvider
+            'siteusersDataProvider' =>  new ActiveDataProvider([
+                'query' =>  Siteuser::find()
+            ])
         ]);
     }
 

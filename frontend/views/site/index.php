@@ -25,12 +25,39 @@ $Gavick["nsp-nsp_157"] = {
 
 JS;
 
+$css = <<<'CSS'
+.slick-prev::before, .slick-next::before{
+    color: #000;
+}
+
+.dayNews .slick-next.slick-arrow{
+    right: -9px;
+}
+
+.dayNews .slick-prev.slick-arrow{
+    left: -19px;
+}
+
+.dayNews .slick-list{
+    max-width: 942px;
+    margin-left: 9px;
+}
+
+.favoriteNews .slick-dots{
+    top: 300px;
+    right: 30px;
+    width: auto;
+}
+CSS;
+
+$this->registerCss($css);
+
 //$this->registerJs($js);
 
 ?>
 <div id="gkTop1" class="gkMain gkWrap">
     <div id="gkToptop1" class="gkCol gkColLeft">
-        <div class="box nsp header">
+        <div class="box nsp header favoriteNews">
             <?php
             $favoriteNewsParts = [];
 
@@ -45,6 +72,7 @@ JS;
                 'clientOptions'     =>  [
                     'slidesToShow'  =>  1,
                     'dots'          =>  true,
+                    'arrows'        =>  false,
                     'autoplay'      =>  true,
                     'autoplaySpeed' =>  4000,
                     'pauseOnHover'  =>  true
@@ -93,6 +121,7 @@ JS;
                 <span>Новости дня</span>
             </h3>
             <div class="content">
+                <div class="dayNews" style="margin-left: 13px">
                 <?php
                 $dayNewsItems = [];
 
@@ -111,6 +140,7 @@ JS;
                     ]
                 ])
                 ?>
+                </div>
             </div>
         </div>
     </div>

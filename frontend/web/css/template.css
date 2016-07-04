@@ -158,8 +158,6 @@ a#gkStyle6 { background-position: 0 -45px; }
 #gkPage .box_menu > div,
 #gkPage .box_text > div { margin: 12px; }
 #gkPage .box_content { padding: 0; overflow: hidden; color:#444; font-size:13px; line-height:1.2; }
-#gkPage .box li,
-#gkPage .box_text li { /*background: transparent url('../images/style1/bullet_color.png') no-repeat left 10px;*/ line-height: 15px; padding-left: 13px; }
 #gkPage .box li:first-child,
 #gkPage .box_menu li:first-child,
 #gkPage .box_text li:first-child { }
