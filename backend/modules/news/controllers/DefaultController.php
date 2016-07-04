@@ -3,8 +3,8 @@
 namespace backend\modules\news\controllers;
 
 use backend\models\LoginForm;
-use common\models\Category;
-use common\models\News;
+use backend\models\Category;
+use backend\models\News;
 use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\ForbiddenHttpException;
@@ -16,10 +16,10 @@ class DefaultController extends Controller
     public function actionIndex()
     {
         $newsDataProvider = new ActiveDataProvider([
-            'query' =>  News::find(),
+            'query' =>  News::find()->with('category'),
             'sort'      =>  [
                 'defaultOrder'  =>  [
-                    'id'    =>  SORT_DESC
+                    'publishDate'    =>  SORT_DESC
                 ]
             ]
         ]);

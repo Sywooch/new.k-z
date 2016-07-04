@@ -12,4 +12,10 @@ return [
     'categories' => [
         'class' => 'backend\modules\categories\Module',
     ],
+    'rss' => [
+        'class' => 'backend\modules\rss\Module',
+    ],
+    'menu' => [
+        'class' => 'backend\modules\menu\Module',
+    ],
 ];

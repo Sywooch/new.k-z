@@ -43,7 +43,16 @@ $this->params['breadcrumbs'][] = $this->title;
                         ]));
                     }
                 ],
-                'categoryID',
+                [
+                    'attribute' =>  'categoryID',
+                    'value'     =>  function($model){
+                        if(empty($model)){
+                            return '';
+                        }
+
+                        return $model->category->title;
+                    }
+                ],
                 'author',
                 [
                     'attribute' =>  'publishDate',

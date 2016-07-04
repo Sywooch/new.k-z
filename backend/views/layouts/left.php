@@ -8,7 +8,7 @@
                 <img src="<?= $directoryAsset ?>/img/user2-160x160.jpg" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p><?=\Yii::$app->user->identity->username?></p>
 
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
@@ -33,6 +33,8 @@
                     ['label' => 'Основное', 'options' => ['class' => 'header']],
                     ['label' => 'Категории', 'icon' => 'fa fa-sitemap', 'url' => ['/categories']],
                     ['label' => 'Новости', 'icon' => 'fa fa-newspaper-o', 'url' => ['/news']],
+                    ['label' => 'Менеджер меню', 'icon' => 'fa fa-bars', 'url' => ['/menu']],
+                    ['label' => 'Менеджер rss', 'icon' => 'fa fa-rss', 'url' => ['/rss']],
                     [
                         'label' => 'Управление системой',
                         'icon' => 'fa fa-share',
@@ -40,8 +42,8 @@
                         'items' => [
                             ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii'],],
                             ['label' => 'Администраторы', 'icon' => 'fa fa-user-secret', 'url' => ['/siteusers'],],
-                            ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug'],],
-                            [
+                            ['label' => 'Дебаг', 'icon' => 'fa fa-dashboard', 'url' => ['/debug'],],
+                            /*[
                                 'label' => 'Level One',
                                 'icon' => 'fa fa-circle-o',
                                 'url' => '#',
@@ -57,7 +59,7 @@
                                         ],
                                     ],
                                 ],
-                            ],
+                            ],*/
                         ],
                     ],
                 ],
