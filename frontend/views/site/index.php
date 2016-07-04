@@ -25,7 +25,7 @@ $Gavick["nsp-nsp_157"] = {
 
 JS;
 
-$this->registerJs($js);
+//$this->registerJs($js);
 
 ?>
 <div id="gkTop1" class="gkMain gkWrap">
@@ -35,34 +35,26 @@ $this->registerJs($js);
                 <div class="content">
                     <div class="nspMain autoanim nspFs100 activated" id="nsp-nsp_157" style="width:100%;">
                         <div class="nspArts right" style="width:100%;">
-                            <div class="nspTopInterface">
-                                <div>
-                                    <ul class="nspPagination">
-                                        <li class="">1</li>
-                                        <li class="">2</li>
-                                        <li class="active">3</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div style="width: 512px; overflow: hidden;" class="nspArtScroll1">
-                                <div style="width: 100000px;" class="nspArtScroll2">
-                                    <?php foreach($favoriteNews as $news){ ?>
-                                        <div style="width: 512px; float: left;" class="nspArtPage">
-                                            <div class="nspArt" style="width:100%!important;">
-                                                <div style="padding:0">
-                                                    <a href="<?=$news->fullLink?>">
-                                                        <img class="nspImage tleft fleft" src="<?=$news->imagePreview?>" alt="<?=$news->title?>" style="width:512px;height:285px;margin:60px 0 0 0;">
-                                                    </a>
-                                                    <h4 class="nspHeader tleft fnone">
-                                                        <a href="<?=$news->fullLink?>" title="<?=$news->title?>"><?=$news->title?></a>
-                                                        <p class="nspInfo  tleft fnone"><?=\Yii::$app->formatter->asDate($news->publishDate)?></p>
-                                                    </h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    <?php } ?>
-                                </div>
-                            </div>
+                            <?php
+                            $favoriteNewsParts = [];
+
+                            foreach($favoriteNews as $news){
+                                $favoriteNewsParts[] = $this->render('index/favorite_news', [
+                                    'news'  =>  $news
+                                ]);
+                            }
+
+                            echo \evgeniyrru\yii2slick\Slick::widget([
+                                'items'             =>  $favoriteNewsParts,
+                                'clientOptions'     =>  [
+                                    'slidesToShow'  =>  1,
+                                    'dots'          =>  true,
+                                    'autoplay'      =>  true,
+                                    'autoplaySpeed' =>  4000,
+                                    'pauseOnHover'  =>  true
+                                ]
+                            ])
+                            ?>
                         </div>
                     </div>
                 </div>
@@ -109,27 +101,25 @@ $this->registerJs($js);
                 <span>Новости дня</span>
             </h3>
             <div class="content">
-                <div class="nspMainPortalMode4 nspFs100" id="nsp-nsp_158">
-                    <div class="nspImages">
-                        <div class="nspArts">
-                            <div style="width: 1874px;" class="nspArtsScroll">
-                                <?php
-                                $first = true;
-                                foreach($dayNews as $n){
-                                    echo $this->render('parts/_day_news', [
-                                        'news'  =>  $n,
-                                        'first' =>  $first
-                                    ]);
+                <div class="nspMainPortalMode4">
+                    <?php
+                    $dayNewsItems = [];
 
-                                    if($first){
-                                        $first = false;
-                                    }
-                                } ?>
-                            </div>
-                        </div>
-                    </div>
-                    <a class="nspPrev">Prev</a>
-                    <a class="nspNext">Next</a>
+                    foreach($dayNews as $key => $n){
+                        $dayNewsItems[] = $this->render('parts/_day_news', [
+                            'news'  =>  $n,
+                            'first' =>  $key == 0
+                        ]);
+                    }
+
+                    echo \evgeniyrru\yii2slick\Slick::widget([
+                        'items' =>  $dayNewsItems,
+                        'clientOptions' =>  [
+                            'slidesToShow'  =>  6,
+                            'arrows'        =>  true
+                        ]
+                    ])
+                    ?>
                 </div>
             </div>
         </div>

@@ -23,7 +23,8 @@
         "kartik-v/yii2-mpdf": "^1.0",
         "bobroid/yii2-remodal": "dev-master",
         "bobroid/yii2-imperavi-redactor": "dev-master",
-        "zelenin/yii2-rss": "^0.1.1"
+        "zelenin/yii2-rss": "^0.1.1",
+        "evgeniyrru/yii2-slick": "^1.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",

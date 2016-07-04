@@ -4,7 +4,7 @@ namespace backend\modules\categories\controllers;
 
 use common\models\Category;
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
+use backend\controllers\SiteController as Controller;
 
 class DefaultController extends Controller
 {

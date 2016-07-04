@@ -39,12 +39,12 @@ class AppAsset extends AssetBundle
         'css/style.portal.mode.4.css'
     ];
     public $js = [
-        'js/mootools-core.js',
-        'js/core.js',
-        'js/caption.js',
-        'js/mootools-more.js',
-        'js/menu.gkmenu.js',
-        'js/gk.scripts.js',
+        //'js/mootools-core.js',
+        //'js/core.js',
+        //'js/caption.js',
+        //'js/mootools-more.js',
+        //'js/menu.gkmenu.js',
+        //'js/gk.scripts.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',

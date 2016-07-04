@@ -6,7 +6,7 @@ use backend\models\LoginForm;
 use backend\models\Category;
 use backend\models\News;
 use yii\data\ActiveDataProvider;
-use yii\web\Controller;
+use backend\controllers\SiteController as Controller;
 use yii\web\ForbiddenHttpException;
 use yii\web\MethodNotAllowedHttpException;
 use yii\web\NotFoundHttpException;
