@@ -35,6 +35,7 @@ class News extends \common\models\News
     public static function getPopular($count = 10){
         return self::find()
             ->with('category')
+            ->where(['favorite' => 1])
             ->orderBy('hits DESC')
             ->limit($count)
             ->all();

@@ -11,6 +11,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use yii\base\InvalidParamException;
+use yii\db\Query;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -106,6 +107,8 @@ class SiteController extends Controller
         if($news->fullLink != \Yii::$app->request->url){
             return $this->redirect($news->fullLink);
         }
+
+        (new Query())->createCommand(\Yii::$app->db)->setSql("UPDATE `news` SET `hits` = `hits` + 1 WHERE `id` = '{$news->id}'")->execute();
 
         return $this->render('article', [
             'article'   =>  $news
