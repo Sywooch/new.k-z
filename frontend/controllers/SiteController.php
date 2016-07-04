@@ -84,9 +84,13 @@ class SiteController extends Controller
 
         $this->layout = 'index';
 
+        $categoryVideo = Category::findOne(['id' => '49']); //Category "VIDEO"
+
         return $this->render('index', [
             'latestNews'    =>  News::find()->with('category')->orderBy('publishTimestamp DESC')->limit(1)->one(),
             'favoriteNews'  =>  News::getFavorite(3),
+            'videoNews'     =>  $categoryVideo->getTopNews(1),
+            'dayNews'       =>  News::find()->where("`categoryID` != {$categoryVideo->id}")->orderBy('publishTimestamp DESC')->limit(12)->all(),
             'mediaPartners' =>  \frontend\models\Ads::byPosition("-1"),
             'selectedCategories'    =>  SelectedCategoriesHelper::getWithColors($selectedCategories)
         ]);

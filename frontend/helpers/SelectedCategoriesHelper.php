@@ -29,7 +29,14 @@ class SelectedCategoriesHelper
     }
 
     public static function getCategoryColor($categoryID){
-        $colors = [];
+        $colors = [
+            '34'    =>  '',
+            '32'    =>  'green',
+            '35'    =>  'grey',
+            '38'    =>  'green',
+            '44'    =>  'blue',
+            '76'    =>  ''
+        ];
 
         if(array_key_exists($categoryID, $colors)){
             return $colors[$categoryID];

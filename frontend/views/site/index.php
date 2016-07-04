@@ -115,7 +115,7 @@ $this->registerJs($js);
                             <div style="width: 1874px;" class="nspArtsScroll">
                                 <?php
                                 $first = true;
-                                foreach(News::getTop(12) as $n){
+                                foreach($dayNews as $n){
                                     echo $this->render('parts/_day_news', [
                                         'news'  =>  $n,
                                         'first' =>  $first
