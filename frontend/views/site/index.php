@@ -31,34 +31,26 @@ JS;
 <div id="gkTop1" class="gkMain gkWrap">
     <div id="gkToptop1" class="gkCol gkColLeft">
         <div class="box nsp header">
-            <div>
-                <div class="content">
-                    <div class="nspMain autoanim nspFs100 activated" id="nsp-nsp_157" style="width:100%;">
-                        <div class="nspArts right" style="width:100%;">
-                            <?php
-                            $favoriteNewsParts = [];
+            <?php
+            $favoriteNewsParts = [];
 
-                            foreach($favoriteNews as $news){
-                                $favoriteNewsParts[] = $this->render('index/favorite_news', [
-                                    'news'  =>  $news
-                                ]);
-                            }
+            foreach($favoriteNews as $news){
+                $favoriteNewsParts[] = $this->render('index/favorite_news', [
+                    'news'  =>  $news
+                ]);
+            }
 
-                            echo \evgeniyrru\yii2slick\Slick::widget([
-                                'items'             =>  $favoriteNewsParts,
-                                'clientOptions'     =>  [
-                                    'slidesToShow'  =>  1,
-                                    'dots'          =>  true,
-                                    'autoplay'      =>  true,
-                                    'autoplaySpeed' =>  4000,
-                                    'pauseOnHover'  =>  true
-                                ]
-                            ])
-                            ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            echo \evgeniyrru\yii2slick\Slick::widget([
+                'items'             =>  $favoriteNewsParts,
+                'clientOptions'     =>  [
+                    'slidesToShow'  =>  1,
+                    'dots'          =>  true,
+                    'autoplay'      =>  true,
+                    'autoplaySpeed' =>  4000,
+                    'pauseOnHover'  =>  true
+                ]
+            ])
+            ?>
         </div>
     </div>
     <div id="gkToptop2" class="gkCol gkColCenter">
@@ -101,26 +93,24 @@ JS;
                 <span>Новости дня</span>
             </h3>
             <div class="content">
-                <div class="nspMainPortalMode4">
-                    <?php
-                    $dayNewsItems = [];
+                <?php
+                $dayNewsItems = [];
 
-                    foreach($dayNews as $key => $n){
-                        $dayNewsItems[] = $this->render('parts/_day_news', [
-                            'news'  =>  $n,
-                            'first' =>  $key == 0
-                        ]);
-                    }
+                foreach($dayNews as $key => $n){
+                    $dayNewsItems[] = $this->render('parts/_day_news', [
+                        'news'  =>  $n,
+                        'first' =>  $key == 0
+                    ]);
+                }
 
-                    echo \evgeniyrru\yii2slick\Slick::widget([
-                        'items' =>  $dayNewsItems,
-                        'clientOptions' =>  [
-                            'slidesToShow'  =>  6,
-                            'arrows'        =>  true
-                        ]
-                    ])
-                    ?>
-                </div>
+                echo \evgeniyrru\yii2slick\Slick::widget([
+                    'items' =>  $dayNewsItems,
+                    'clientOptions' =>  [
+                        'slidesToShow'  =>  6,
+                        'arrows'        =>  true
+                    ]
+                ])
+                ?>
             </div>
         </div>
     </div>
