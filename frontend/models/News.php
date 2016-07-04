@@ -37,7 +37,7 @@ class News extends \common\models\News
             ->with('category')
             ->where(['favorite' => 1])
             ->orderBy('hits DESC')
-            ->limit($count)
+            //->limit($count)
             ->all();
     }
 
