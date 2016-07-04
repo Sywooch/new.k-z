@@ -36,7 +36,7 @@
                     ['label' => 'Менеджер меню', 'icon' => 'fa fa-bars', 'url' => ['/menu']],
                     ['label' => 'Менеджер rss', 'icon' => 'fa fa-rss', 'url' => ['/rss']],
                     [
-                        'label' => 'Управление системой',
+                        'label' => 'Система',
                         'icon' => 'fa fa-share',
                         'url' => '#',
                         'items' => [
