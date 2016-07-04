@@ -25,7 +25,7 @@ class News extends \common\models\News
      * @return ActiveQuery
      */
     public static function find(){
-        return parent::find()->andWhere(['published' => 1]);
+        return parent::find()->andWhere(['published' => 1, 'deleted' => 0]);
     }
 
     /**

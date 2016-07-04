@@ -6,6 +6,7 @@ use common\models\Menu;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
+use yii\web\Controller;
 
 /**
  * Default controller for the `menu` module

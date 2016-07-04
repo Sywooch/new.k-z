@@ -48,16 +48,16 @@ class Category extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => Yii::t('common', 'ID'),
-            'link' => Yii::t('common', 'Link'),
-            'title' => Yii::t('common', 'Title'),
-            'parent' => Yii::t('common', 'Parent'),
-            'created' => Yii::t('common', 'Created'),
-            'created_user' => Yii::t('common', 'Created User'),
-            'meta_description' => Yii::t('common', 'Meta Description'),
-            'meta_keywords' => Yii::t('common', 'Meta Keywords'),
-            'deleted' => Yii::t('common', 'Deleted'),
-            'published' => Yii::t('common', 'Published'),
+            'id' => 'ID',
+            'link' => 'Ссылка',
+            'title' => 'Заголовок',
+            'parent' => 'Родитель',
+            'created' => 'Создано',
+            'created_user' => 'Создатель',
+            'meta_description' => 'Мета-описание',
+            'meta_keywords' => 'Ключевые слова',
+            'deleted' => 'Удалено',
+            'published' => 'Опубликовано',
         ];
     }
 }
