@@ -25,7 +25,7 @@ $('button.apps-buttons').on('click', function(){
                     html = data != 1 ? '<i class="fa fa-eye-slash"></i><small>спрятано</small>' : '<i class="fa fa-eye"></i><small>опубликовано</small>';
                     break;
                 case 'favorite':
-                    html = data != 1 ? '<i class="fa fa-star-o"></i><small>не избранное</small>' : '<i class="fa fa-star"></i><small>в избранном</small>';
+                    html = data != 1 ? '<i class="fa fa-star-o"></i><small>в избранное</small>' : '<i class="fa fa-star"></i><small>в избранном</small>';
                     break;
                 case 'deleted':
                     html = data != 1 ? '<i class="fa fa-trash-o"></i><small>удалить</small>' : '<i class="fa fa-trash"></i><small>удалено</small>';
@@ -45,13 +45,21 @@ $buttons = [];
 if(!$model->isNewRecord){
     switch(\Yii::$app->request->get('act')){
         case 'edit':
-            $buttons[] = Html::a(
-                FontAwesome::i('arrow-left').Html::tag('small', 'назад'),
-                Url::to(['/news/show/'.$model->id], true),
-                [
-                    'class' =>  'btn btn-app'
-                ]
-            );
+            $buttons = array_merge($buttons, [
+                Html::a(
+                    FontAwesome::i('arrow-left').Html::tag('small', 'назад'),
+                    Url::to(['/news/show/'.$model->id], true),
+                    [
+                        'class' =>  'btn btn-app'
+                    ]
+                ),
+                Html::button(
+                    FontAwesome::i('save').Html::tag('small', 'сохранить'),
+                    [
+                        'class' =>  'btn btn-app btn-success'
+                    ]
+                )
+            ]);
             break;
         default:
             $buttons[] = Html::a(
@@ -67,12 +75,6 @@ if(!$model->isNewRecord){
 
 $buttons = array_merge($buttons, [
     Html::button(
-        FontAwesome::i('save').Html::tag('small', 'сохранить'),
-        [
-            'class' =>  'btn btn-app btn-success'
-        ]
-    ),
-    Html::button(
         FontAwesome::i($model->published == 1 ? 'eye' : 'eye-slash').Html::tag('small', $model->published == 1 ? 'опубликовано' : 'спрятано'),
         [
             'class'             =>  'btn btn-app apps-buttons',//.($model->published == 1 ? ' bg-olive' : ''),
@@ -81,7 +83,7 @@ $buttons = array_merge($buttons, [
         ]
     ),
     Html::button(
-        FontAwesome::i($model->favorite == 1 ? 'star' : 'star-o').Html::tag('small', $model->favorite == 1 ? 'в избранном' : 'не избранное'),
+        FontAwesome::i($model->favorite == 1 ? 'star' : 'star-o').Html::tag('small', $model->favorite == 1 ? 'в избранном' : 'в избранное'),
         [
             'class'             =>  'btn btn-app apps-buttons',//.($model->favorite == 1 ? ' bg-orange' : ''),
             'data-attribute'    =>  'favorite',
