@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "15c00849d2b60ec62a4b90f73f90fcf6",
-    "content-hash": "cacc99574bbac6b0928519ef612e652c",
+    "hash": "cb159bdcda899283c847b211fbbb3f8f",
+    "content-hash": "a73dade5452d9506e063bc636afc1f62",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
-            "version": "v2.3.3",
+            "version": "v2.3.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/almasaeed2010/AdminLTE.git",
-                "reference": "8db979795044412a2e2b4e9659788c23cb59fcd3"
+                "reference": "0ab2eb7f382e79810ebf3032ce766a02af2b0f3b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/almasaeed2010/AdminLTE/zipball/8db979795044412a2e2b4e9659788c23cb59fcd3",
-                "reference": "8db979795044412a2e2b4e9659788c23cb59fcd3",
+                "url": "https://api.github.com/repos/almasaeed2010/AdminLTE/zipball/0ab2eb7f382e79810ebf3032ce766a02af2b0f3b",
+                "reference": "0ab2eb7f382e79810ebf3032ce766a02af2b0f3b",
                 "shasum": ""
             },
             "type": "library",
@@ -45,29 +45,41 @@
                 "theme",
                 "web"
             ],
-            "time": "2016-03-24 14:31:41"
+            "time": "2016-07-03 15:21:22"
         },
         {
-            "name": "bobroid/yii2-imperavi-redactor",
-            "version": "dev-master",
+            "name": "asofter/yii2-imperavi-redactor",
+            "version": "0.0.3",
+            "target-dir": "yii/imperavi",
             "source": {
                 "type": "git",
-                "url": "https://github.com/BoBRoID/yii2-imperavi-redactor",
-                "reference": "66308b2c270caff6baea51fdc86c60b79bde137b"
+                "url": "https://github.com/asofter/yii2-imperavi-redactor.git",
+                "reference": "08e05dd323f7b8f247a68324a5767eb14ffb7a1f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/asofter/yii2-imperavi-redactor/zipball/08e05dd323f7b8f247a68324a5767eb14ffb7a1f",
+                "reference": "08e05dd323f7b8f247a68324a5767eb14ffb7a1f",
+                "shasum": ""
             },
             "require": {
                 "yiisoft/yii2": "*"
             },
             "type": "yii2-extension",
             "autoload": {
-                "psr-4": {
-                    "bobroid\\imperavi\\": ""
+                "psr-0": {
+                    "yii\\imperavi\\": ""
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "BSD-3-Clause"
             ],
             "authors": [
+                {
+                    "name": "Alexander Yaremchuk",
+                    "email": "alwex10@gmail.com"
+                },
                 {
                     "name": "Veaceslav Medvedev",
                     "email": "slavcopost@gmail.com"
@@ -76,14 +88,6 @@
                     "name": "Alexander Makarov",
                     "email": "sam@rmcreative.ru",
                     "homepage": "http://rmcreative.ru/"
-                },
-                {
-                    "name": "Alexander Yaremchuk",
-                    "email": "alwex10@gmail.com"
-                },
-                {
-                    "name": "Nikolai Gilko",
-                    "email": "n.gilko@gmail.com"
                 }
             ],
             "description": "Imperavi Redactor WYSIWYG widget (OEM-licensed for Yii 2)",
@@ -92,14 +96,7 @@
                 "imperavi redactor",
                 "yii"
             ],
-            "support": {
-                "issues": "https://github.com/BoBRoID/yii2-imperavi-redactor/issues",
-                "forum": "http://www.yiiframework.com/forum/",
-                "wiki": "http://www.yiiframework.com/wiki/",
-                "irc": "irc://irc.freenode.net/yii",
-                "source": "https://github.com/BoBRoID/yii2-imperavi-redactor"
-            },
-            "time": "2015-10-14 12:40:31"
+            "time": "2016-01-12 16:21:51"
         },
         {
             "name": "bobroid/yii2-remodal",
@@ -1638,8 +1635,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
-        "bobroid/yii2-remodal": 20,
-        "bobroid/yii2-imperavi-redactor": 20
+        "bobroid/yii2-remodal": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

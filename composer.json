@@ -22,7 +22,7 @@
         "kartik-v/yii2-grid": "*",
         "kartik-v/yii2-mpdf": "^1.0",
         "bobroid/yii2-remodal": "dev-master",
-        "bobroid/yii2-imperavi-redactor": "dev-master",
+        "asofter/yii2-imperavi-redactor": "*",
         "zelenin/yii2-rss": "^0.1.1",
         "evgeniyrru/yii2-slick": "^1.0",
         "kartik-v/yii2-widget-activeform": "^1.4",

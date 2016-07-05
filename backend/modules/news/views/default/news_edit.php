@@ -12,6 +12,9 @@ use rmrevin\yii\fontawesome\FontAwesome;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
+//\bobroid\imperavi\FilemanagerImperaviRedactorPluginAsset::register($this);
+//\bobroid\imperavi\ImagemanagerImperaviRedactorPluginAsset::register($this);
+
 $mode = !isset($mode) ? 'new' : $mode;
 
 $this->title = $model->title;
@@ -58,8 +61,14 @@ echo Html::endTag('div'),
     $form->field($model, 'category')->widget(\kartik\select2\Select2::className(), [
         'data'  =>  ArrayHelper::map(Category::find()->where(['deleted' => 0])->asArray()->all(), 'id', 'title')
     ]).
-    $form->field($model, 'text')->widget(\bobroid\imperavi\Widget::className(), [
-
+    $form->field($model, 'text')->widget(\yii\imperavi\Widget::className(), [
+        'options'   =>  [
+            'lang'  =>  'ru'
+        ],
+        'plugins'   =>  [
+            'imagemanager',
+            'filemanager'
+        ]
     ]).
     $form->field($model, 'metaDescription')->textarea().
     $form->field($model, 'metaKeywords').
