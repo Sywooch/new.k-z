@@ -9,6 +9,8 @@
 namespace backend\models;
 
 
+use backend\helpers\TranslitHelper;
+
 class News extends \common\models\News
 {
 
