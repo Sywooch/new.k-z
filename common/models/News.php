@@ -81,6 +81,15 @@ class News extends \yii\db\ActiveRecord
 
     public function beforeSave($insert)
     {
+        if($this->published == 1 && $this->published != $this->getOldAttribute('published')){
+            $this->publishDate = date('Y-m-d H:i:s');
+            $this->publishTimestamp = strtotime($this->publishDate);
+        }
+
+        if($this->published == 0 && $this->published != $this->getOldAttribute('published')){
+            $this->unpublishDate = date('Y-m-d H:i:s');
+        }
+
         if(empty($this->publishTimestamp)){
             $this->publishTimestamp = strtotime($this->publishDate);
         }
