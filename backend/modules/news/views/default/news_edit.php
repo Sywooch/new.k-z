@@ -12,9 +12,6 @@ use rmrevin\yii\fontawesome\FontAwesome;
 use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
-//\bobroid\imperavi\FilemanagerImperaviRedactorPluginAsset::register($this);
-//\bobroid\imperavi\ImagemanagerImperaviRedactorPluginAsset::register($this);
-
 $mode = !isset($mode) ? 'new' : $mode;
 
 $this->title = $model->title;
@@ -63,11 +60,12 @@ echo Html::endTag('div'),
     ]).
     $form->field($model, 'text')->widget(\yii\imperavi\Widget::className(), [
         'options'   =>  [
-            'lang'  =>  'ru'
+            'lang'          =>  'ru',
+            'imageUpload'       =>  '/news/upload',
+            'imageManagerJson'  =>  '/news/uploaded'
         ],
         'plugins'   =>  [
             'imagemanager',
-            'filemanager'
         ]
     ]).
     $form->field($model, 'metaDescription')->textarea().
