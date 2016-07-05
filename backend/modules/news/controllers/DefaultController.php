@@ -4,6 +4,7 @@ namespace backend\modules\news\controllers;
 
 use backend\models\Category;
 use backend\models\News;
+use backend\modules\news\models\NewsForm;
 use yii\data\ActiveDataProvider;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
@@ -63,7 +64,8 @@ class DefaultController extends Controller
 
 
         return $this->render('news_edit', [
-            'model' =>  new News()
+            'model' =>  new NewsForm(),
+            'mode'  =>  'new'
         ]);
     }
 
@@ -71,25 +73,33 @@ class DefaultController extends Controller
         $news = News::findOne(['id' => $id]);
 
         if(!$news){
-            throw new NotFoundHttpException("Не найдена новость с ID ".$id);
-        }
-
-        $category = Category::findOne($news->category);
-
-        if(!$category){
-            $category = new Category();
+            throw new NotFoundHttpException("Не найдена новость с ID {$id}");
         }
 
         if(\Yii::$app->request->get("act") == 'edit'){
+            $form = new NewsForm();
+
+            $form->setNews($news);
+
+            if(\Yii::$app->request->post('NewsForm')){
+                $form->load(\Yii::$app->request->post());
+
+                if($form->save()){
+                    \Yii::$app->getSession()->setFlash('saved', '<h4><i class="icon fa fa-check"></i> Успех!</h4>Изменения сохранены!');
+                }else{
+                    \Yii::$app->getSession()->setFlash('error', '<h4><i class="icon fa fa-ban"></i> Ошибка!</h4>Произошла ошибка при сохранении изменений!');
+                }
+            }
+
             return $this->render('news_edit', [
-                'model'     =>  $news,
-                'category'  =>  $category
+                'model'     =>  $form,
+                'mode'      =>  'edit'
             ]);
         }
 
         return $this->render('news', [
             'model'     =>  $news,
-            'category'  =>  $category
+            'category'  =>  $news->category
         ]);
     }
 

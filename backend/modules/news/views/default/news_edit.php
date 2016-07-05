@@ -6,10 +6,15 @@
  * Time: 0:04
  */
 
+use kartik\form\ActiveForm;
+use rmrevin\yii\fontawesome\FontAwesome;
+use yii\helpers\Html;
+
+$mode = !isset($mode) ? 'new' : $mode;
 
 $this->title = $model->title;
 
-if($model->isNewRecord){
+if($mode == 'new'){
     $this->title = 'Добавить новость';
 }
 
@@ -20,18 +25,60 @@ $this->params['breadcrumbs'][] = [
 
 $this->params['breadcrumbs'][] = $this->title;
 
-?>
-<div class="box box-primary">
-    <?=$this->render('_news_header_buttons', ['model' => $model])?>
-    <div class="col-xs-12">
-    <?php
-    $form = \yii\bootstrap\ActiveForm::begin();
-    echo $form->field($model, 'text')->widget(\bobroid\imperavi\Widget::className(), [
+echo Html::beginTag('div', ['class' => 'box box-primary']);
 
-    ])->label(false);
+$form = ActiveForm::begin([
+    'type' => ActiveForm::TYPE_HORIZONTAL,
+]);
 
-    $form->end();
-    ?>
-    </div>
-    <div class="clearfix"></div>
-</div>
+echo $this->render('_news_header_buttons', ['model' => $model, 'mode' => $mode]),
+Html::beginTag('div', ['class' => 'col-xs-12']);
+
+if(\Yii::$app->session->getFlash('saved', false)){
+    echo \yii\bootstrap\Alert::widget([
+        'body'      =>  \Yii::$app->session->getFlash('saved'),
+        'options'   =>  [
+            'class' =>  'alert alert-success alert-dismissible'
+        ]
+    ]);
+}else if(\Yii::$app->session->getFlash('error', false)){
+    echo \yii\bootstrap\Alert::widget([
+        'body'      =>  \Yii::$app->session->getFlash('error'),
+        'options'   =>  [
+            'class' =>  'alert alert-danger alert-dismissible row col-xs-10 col-xs-offset-1'
+        ]
+    ]);
+}
+
+echo Html::endTag('div'),
+    Html::tag('div',
+    $form->field($model, 'title').
+    //$form->field($model, 'category')->widget().
+    $form->field($model, 'text')->widget(\bobroid\imperavi\Widget::className(), [
+
+    ]).
+    $form->field($model, 'metaDescription')->textarea().
+    $form->field($model, 'metaKeywords'),
+    [
+        'class' =>  'col-xs-12'
+    ]
+),
+$form->field($model, 'published', ['options' => ['style' => 'display: none']])->hiddenInput()->label(false),
+$form->field($model, 'favorite', ['options' => ['style' => 'display: none']])->hiddenInput()->label(false),
+$form->field($model, 'deleted', ['options' => ['style' => 'display: none']])->hiddenInput()->label(false),
+Html::tag('div',
+    Html::button(
+        FontAwesome::i('save').Html::tag('small', 'сохранить'),
+        [
+            'class' =>  'btn btn-app btn-success',
+            'type'  =>  'submit'
+        ]
+    ), [
+        'class' => 'text-center'
+    ]
+);
+
+$form->end();
+
+echo Html::tag('div', '', ['class' => 'clearfix']),
+Html::endTag('div');
