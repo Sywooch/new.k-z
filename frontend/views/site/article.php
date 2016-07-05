@@ -18,7 +18,7 @@ echo \yii\helpers\Html::tag('h2', $this->title)?>
         Опубликовано <?=Yii::$app->formatter->asDatetime($article->publishDate, 'php:d.m.Y H:i');?>
     </dd>
     <dd class="createdby">
-        Автор: <?=isset($article->author) ? '' : $article->author->username?>
+        Автор: <?=$article->author?>
     </dd>
 </dl>
 <div class="articleContent">

@@ -25,6 +25,8 @@ class NewsForm extends Model{
 
     public $text;
 
+    public $author;
+
     public $metaKeywords;
 
     public $metaDescription;
@@ -48,6 +50,7 @@ class NewsForm extends Model{
             'favorite'      =>  'Избранное',
             'deleted'       =>  'Удалено',
             'published'     =>  'Опубликовано',
+            'author'        =>  'Автор',
         ];
     }
 
@@ -83,7 +86,8 @@ class NewsForm extends Model{
             'category'      =>  $news->categoryID,
             'favorite'      =>  $news->favorite,
             'published'     =>  $news->published,
-            'deleted'       =>  $news->deleted
+            'deleted'       =>  $news->deleted,
+            'author'        =>  $news->author
         ]);
 
         $this->setText($news->textPreview, $news->text);
@@ -105,7 +109,8 @@ class NewsForm extends Model{
             'published'     =>  $this->published,
             'deleted'       =>  $this->deleted,
             'textPreview'   =>  $this->textPreview,
-            'text'          =>  $this->textExtension
+            'text'          =>  $this->textExtension,
+            'author'        =>  $this->author
         ], false);
 
         if(!$news->save(false)){
@@ -121,7 +126,7 @@ class NewsForm extends Model{
     {
         return [
             [['id', 'category', 'favorite', 'published', 'deleted'], 'integer'],
-            [['title', 'metaKeywords'], 'string', 'max' => 255],
+            [['title', 'metaKeywords', 'author'], 'string', 'max' => 255],
             [['text', 'metaDescription'], 'string']
         ];
     }

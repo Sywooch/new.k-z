@@ -26,7 +26,7 @@ use yii\helpers\Url;
                     Создано <?=Yii::$app->formatter->asDatetime($model->publishDate, 'php:d.m.Y H:i');?>
                 </dd>
                 <dd class="createdby">
-                    Автор: <?=/*isset($model->author) && !empty($model->author) ? $model->author->username : */''?>
+                    Автор: <?=$model->author?>
                 </dd>
 
             </dl>

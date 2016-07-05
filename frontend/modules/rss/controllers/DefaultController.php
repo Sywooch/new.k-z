@@ -86,8 +86,7 @@ class DefaultController extends Controller
                     return Url::toRoute([$model->fullLink], true);
                 },
                 'author' => function ($model, $widget, \Zelenin\Feed $feed) {
-                    return '';
-                    return $model->user->email . ' (' . $model->user->username . ')';
+                    return $model->author;
                 },
                 'guid' => function ($model, $widget, \Zelenin\Feed $feed) {
                     return '';

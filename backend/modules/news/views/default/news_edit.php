@@ -62,7 +62,8 @@ echo Html::endTag('div'),
 
     ]).
     $form->field($model, 'metaDescription')->textarea().
-    $form->field($model, 'metaKeywords'),
+    $form->field($model, 'metaKeywords').
+    $form->field($model, 'author'),
     [
         'class' =>  'col-xs-12'
     ]
