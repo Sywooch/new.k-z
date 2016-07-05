@@ -145,6 +145,7 @@ $this->beginPage() ?>
                         </div>
                     </div>
                 </div>
+
                 <?=$this->render('_rightMenu')?>
             </div>
         </div>

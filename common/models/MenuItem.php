@@ -2,7 +2,7 @@
 
 namespace common\models;
 
-use common\helpers\TranslitHelper;
+use backend\helpers\TranslitHelper;
 use Yii;
 
 /**

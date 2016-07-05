@@ -5,36 +5,32 @@
 <div class="category-desc">
     <div class="clr"></div>
 </div>
-<div id="pjax-target">
-    <?php
-    use yii\widgets\ListView;
-    //$pjax = new \yii\widgets\Pjax();
-    //$pjax->formSelector = '#pjax-target';
-    //$pjax->begin();
-    echo ListView::widget([
-        'dataProvider'  => new \yii\data\ActiveDataProvider([
-            'query' =>  $category->getNews()->with('category')
-        ]),
-        'itemOptions'   => [
-            'class'         => 'items-row'
-        ],
-        'itemView'      => '_in_category_news',
-        'viewParams'    => [
-            'categoryLink'  => $category->link,
-        ],
-        'summary'       =>  'Страница {page} из {pageCount}',
-        'pager'         =>  [
-            'nextPageLabel'         =>  'вперёд',
-            'prevPageLabel'         =>  'назад',
-            'firstPageLabel'        =>  'В начало',
-            'lastPageLabel'         =>  'В конец',
-        ],
-        //'summary'     =>  '',
-        'layout'        =>  '{items}'./*$itemsMore*/''.'<div class="pagination"><p class="counter">{summary}</p> {pager}</div>',
-    ]);
-    //$pjax->end();
-    ?>
-</div>
+<?php
+use yii\widgets\ListView;
+//$pjax = new \yii\widgets\Pjax();
+//$pjax->formSelector = '#pjax-target';
+//$pjax->begin();
+echo ListView::widget([
+    'dataProvider'  => $dataProvider,
+    'itemOptions'   => [
+        'class'         => 'items-row'
+    ],
+    'itemView'      => '_in_category_news',
+    'viewParams'    => [
+        'categoryLink'  => $category->link,
+    ],
+    'summary'       =>  'Страница {page} из {pageCount}',
+    'pager'         =>  [
+        'nextPageLabel'         =>  'вперёд',
+        'prevPageLabel'         =>  'назад',
+        'firstPageLabel'        =>  'В начало',
+        'lastPageLabel'         =>  'В конец',
+    ],
+    //'summary'     =>  '',
+    'layout'        =>  '{items}'./*$itemsMore*/''.'<div class="pagination"><p class="counter">{summary}</p> {pager}</div>',
+]);
+//$pjax->end();
+?>
     <!--
     <div class="pagination">
         <p class="counter">Страница 1 из 300 </p>

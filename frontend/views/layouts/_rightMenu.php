@@ -44,42 +44,7 @@ use frontend\models\News;
         </div>
         <?php } ?>
         <!-- Блок видео: конец -->
-        <!-- Популярное: начало -->
-        <div class="box nsp blue sidebar">
-            <div>
-                <h3 class="header">
-                    <span>Популярное</span>
-                </h3>
-
-                <div class="content">
-                    <div class="nspMain autoanim hover nspFs100 activated" id="nsp-nsp_162" style="width:100%;">
-                        <div class="nspArts bottom" style="width:100%;">
-                            <div style="width: 256px; overflow: hidden;" class="nspArtScroll1">
-                                <div style="width: 100000px;" class="nspArtScroll2">
-                                    <div style="width: 256px; float: left;" class="nspArtPage">
-                                        <?php foreach(News::find()->orderBy('hits DESC')->with('category')->limit(9)->all() as $n){
-                                            ?>
-                                            <div class="nspArt" style="width:100%!important;">
-                                                <div style="padding:16px 0">
-                                                    <a href="<?=$n->fullLink?>"  title="<?=$n->title?>">
-                                                        <img class="nspImage tleft fleft" src="<?=$n->imagePreview?>" alt="<?=$n->title?>" style="width:66px;height:40px;margin:0 14px 0 0;">
-                                                        <h4 class="nspHeader tleft fleft">
-                                                            <?=$n->getTitle(22)?>
-                                                        </h4>
-                                                    </a>
-                                                    <p class="nspInfo  tleft fleft"><?=Yii::$app->formatter->asDatetime($n['publishDate'], 'php:F d, Y');?></p>
-                                                </div>
-                                            </div>
-                                        <?php } ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- Популярные: конец -->
+        <?=$this->render('../site/parts/popular')?>
         <!-- Виджет ВК: начало -->
         <?php
         if(Yii::$app->params['vkWidget']['show']){ ?>

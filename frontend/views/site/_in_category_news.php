@@ -31,7 +31,7 @@ use yii\helpers\Url;
 
             </dl>
         </div>
-        <?=$model->textPreview?>
+        <?=strip_tags($model->textPreview, '<a></a><img><p></p><span></span>')?>
         <div class="jcomments-links">
             <a class="readmore-link" href="<?=Url::toRoute([$model->fullLink], true)?>" title="<?=$model->title?>">Подробнее...</a>
             <a class="comments-link" href="<?=Url::toRoute([$model->fullLink], true)?>#addcomment" title="Добавить комментарий">

@@ -6,7 +6,7 @@
  * Time: 0:18
  */
 
-namespace common\helpers;
+namespace backend\helpers;
 
 
 class TranslitHelper

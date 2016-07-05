@@ -288,33 +288,7 @@ $this->registerCss($css);
                         </div>
                     </div>
                 </div>
-                <div class="box nsp blue sidebar">
-                    <div>
-                        <h3 class="header">
-                            <span>Популярное</span>
-                        </h3>
-                        <div class="content">
-                            <div class="nspMain autoanim hover nspFs100 activated" id="nsp-nsp_162" style="width:100%;">
-                                <div class="nspArts bottom" style="width:100%;">
-
-                                    <div style="width: 256px; overflow: hidden;" class="nspArtScroll1">
-                                        <div style="width: 100000px;" class="nspArtScroll2">
-                                            <div style="width: 256px; float: left;" class="nspArtPage">
-                                                <?php
-                                                foreach(News::getPopular(9) as $popularNews){
-                                                    echo $this->render('parts/_popular_news_item', [
-                                                        'news'  =>  $popularNews
-                                                    ]);
-                                                }
-                                                ?>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <?=$this->render('parts/popular')?>
                 <div class="box nsp" style="min-height: 100px; margin-top: 8px;">
                     <script type="text/javascript" src="//vk.com/js/api/openapi.js?98"></script>
                     <!-- VK Widget -->
