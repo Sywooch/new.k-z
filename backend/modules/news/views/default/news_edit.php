@@ -6,8 +6,10 @@
  * Time: 0:04
  */
 
+use backend\models\Category;
 use kartik\form\ActiveForm;
 use rmrevin\yii\fontawesome\FontAwesome;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Html;
 
 $mode = !isset($mode) ? 'new' : $mode;
@@ -53,7 +55,9 @@ if(\Yii::$app->session->getFlash('saved', false)){
 echo Html::endTag('div'),
     Html::tag('div',
     $form->field($model, 'title').
-    //$form->field($model, 'category')->widget().
+    $form->field($model, 'category')->widget(\kartik\select2\Select2::className(), [
+        'data'  =>  ArrayHelper::map(Category::find()->where(['deleted' => 0])->asArray()->all(), 'id', 'title')
+    ]).
     $form->field($model, 'text')->widget(\bobroid\imperavi\Widget::className(), [
 
     ]).
