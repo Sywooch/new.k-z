@@ -100,15 +100,21 @@ class NewsForm extends Model{
             'title'         =>  $this->title,
             'metaKeywords'  =>  $this->metaKeywords,
             'metaDescription'=> $this->metaDescription,
-            'category'      =>  $this->category,
+            'categoryID'    =>  $this->category,
             'favorite'      =>  $this->favorite,
             'published'     =>  $this->published,
             'deleted'       =>  $this->deleted,
             'textPreview'   =>  $this->textPreview,
             'text'          =>  $this->textExtension
-        ]);
+        ], false);
 
-        return $news->save(false);
+        if(!$news->save(false)){
+            return false;
+        }
+
+        $this->id = $news->id;
+
+        return true;
     }
 
     public function rules()

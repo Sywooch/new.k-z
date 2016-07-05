@@ -61,10 +61,22 @@ class DefaultController extends Controller
     }
 
     public function actionNew(){
+        $form = new NewsForm();
 
+        if(\Yii::$app->request->post('NewsForm')){
+            $form->load(\Yii::$app->request->post());
+
+            if($form->save()){
+                \Yii::$app->getSession()->setFlash('saved', '<h4><i class="icon fa fa-check"></i> Успех!</h4>Новость '.$form->title.' добавлена! <a href="/news/show/'.$form->id.'">Просмотреть в админке</a>');
+
+                $form = new NewsForm();
+            }else{
+                \Yii::$app->getSession()->setFlash('error', '<h4><i class="icon fa fa-ban"></i> Ошибка!</h4>Произошла ошибка при добавлении новости!');
+            }
+        }
 
         return $this->render('news_edit', [
-            'model' =>  new NewsForm(),
+            'model' =>  $form,
             'mode'  =>  'new'
         ]);
     }
