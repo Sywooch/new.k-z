@@ -6,6 +6,8 @@ class m160630_213057_migrate_menus extends Migration
 {
     public function up()
     {
+        $this->addColumn(\common\models\MenuItem::tableName(), 'linkType', $this->smallInteger()->unsigned()->notNull()->defaultValue(0));
+
         $menuTypes = new \yii\db\Query();
 
         $menuTypes = $menuTypes->from(\Yii::$app->params['oldDb'].'.joom_menu_types')->all();
@@ -46,6 +48,7 @@ class m160630_213057_migrate_menus extends Migration
     {
         \common\models\Menu::deleteAll();
         \common\models\MenuItem::deleteAll();
+        $this->dropColumn(\common\models\MenuItem::tableName(), 'linkType');
     }
 
     /*
