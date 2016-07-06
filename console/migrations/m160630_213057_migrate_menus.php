@@ -30,7 +30,7 @@ class m160630_213057_migrate_menus extends Migration
         $menuItems = $menuItems->from(\Yii::$app->params['oldDb'].'.joom_menu')->where(['published' => 1])->all();
 
         foreach($menuItems as $item){
-            $menuID = array_key_exists($item['menutype'], $createdMenus) ? $createdMenus[$item['menutype']]->id : '';
+            $menuID = array_key_exists($item['menutype'], $createdMenus) ? $createdMenus[$item['menutype']]->id : 0;
 
             if(!empty($menuType)){
                 $menuItem = new \common\models\MenuItem([
