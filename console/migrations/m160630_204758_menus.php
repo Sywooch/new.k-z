@@ -17,6 +17,7 @@ class m160630_204758_menus extends Migration
             'menuID'=>  $this->bigInteger()->notNull()->unsigned()->defaultValue(0),
             'name'  =>  $this->string()->notNull(),
             'link'  =>  $this->string(128)->notNull(),
+            'linkType'  =>  $this->smallInteger()->unsigned()->notNull()->defaultValue(0)
         ]);
 
         $this->createIndex('link', 'menuItems', ['menuID', 'link'], true);
