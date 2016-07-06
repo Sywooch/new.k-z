@@ -25,18 +25,8 @@ $this->beginPage() ?>
     <?= Html::csrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
-    <script type="text/javascript" src="http://k-z.com.ua/media/system/js/validate.js"></script>
-    <script type="text/javascript" src="http://k-z.com.ua/modules/mod_news_pro_gk4/interface/scripts/engine.js"></script>
-    <script type="text/javascript" src="http://k-z.com.ua/plugins/content/jw_allvideos/jw_allvideos/includes/js/behaviour.js"></script>
-    <script type="text/javascript" src="http://k-z.com.ua/plugins/content/jw_allvideos/jw_allvideos/includes/js/mediaplayer/jwplayer.js"></script>
-    <script type="text/javascript" src="http://k-z.com.ua/plugins/content/jw_allvideos/jw_allvideos/includes/js/wmvplayer/silverlight.js"></script>
-    <script type="text/javascript" src="http://k-z.com.ua/plugins/content/jw_allvideos/jw_allvideos/includes/js/wmvplayer/wmvplayer.js"></script>
-    <script type="text/javascript" src="http://k-z.com.ua/plugins/content/jw_allvideos/jw_allvideos/includes/js/quicktimeplayer/AC_QuickTime.js"></script>
-    <script type="text/javascript" src="http://k-z.com.ua/modules/mod_image_show_gk4/styles/gk_sporter2/engine.js"></script>
-    <script async="async" defer="defer" type="t" src="http://k-z.com.ua/modules/mod_news_pro_gk4/interface/scripts/engine.portal.mode.4.js"></script>
 </head>
 <body>
-    <script type="text/javascript" src="http://k-z.com.ua/modules/mod_news_pro_gk4/interface/scripts/engine.portal.mode.4.js"></script>
 <?php $this->beginBody() ?>
         <div class="gkMain gkWrap" id="gkPage">
             <div id="gkLogoWrap">

@@ -43,10 +43,28 @@ $css = <<<'CSS'
     margin-left: 9px;
 }
 
+.favoriteNews{
+    overflow: hidden !important;
+    height: 369px;
+}
+
 .favoriteNews .slick-dots{
     top: 300px;
     right: 30px;
     width: auto;
+}
+
+.leftNews{
+    height: 260px;
+    width: 206px;
+    overflow: hidden;
+    border-radius: 3px;
+    display: block;
+}
+
+.leftNews img.image{
+    height: 260px;
+    margin-left: -50%;
 }
 CSS;
 
@@ -91,7 +109,7 @@ $this->registerCss($css);
                                 <div style="width: 100000px;" class="nspArtScroll2">
                                     <div style="width: 198px; float: left;" class="nspArtPage">
                                         <div class="nspArt" style="width:100%!important;">
-                                            <div style="padding:0">
+                                            <div style="padding:0; height: 346px">
                                                 <a href="<?=$latestNews->fullLink?>">
                                                     <img class="nspImage tleft fleft" alt="<?=$latestNews->title?>" style="width:195px;height:98px;margin:0 0 7px 0;" src="<?=$latestNews->imagePreview?>">
                                                 </a>
@@ -290,16 +308,24 @@ $this->registerCss($css);
                 </div>
                 <?=$this->render('parts/popular')?>
                 <div class="box nsp" style="min-height: 100px; margin-top: 8px;">
-                    <script type="text/javascript" src="//vk.com/js/api/openapi.js?98"></script>
+                    <script type="text/javascript" src="//vk.com/js/api/openapi.js?116"></script>
+
                     <!-- VK Widget -->
-                    <div style="height: 140px; width: 256px; background: transparent none repeat scroll 0% 0%;" id="vk_groups"><iframe style="overflow: hidden; height: 140px;" id="vkwidget1" scrolling="no" src="http://vk.com/widget_community.php?app=0&amp;width=256px&amp;_ver=1&amp;gid=56660615&amp;mode=1&amp;color1=FFFFFF&amp;color2=2B587A&amp;color3=5B7FA6&amp;class_name=&amp;height=280&amp;url=http%3A%2F%2Fk-z.com.ua%2F&amp;14ca7a2bfd5" name="fXD75a72" frameborder="0" height="200" width="256"></iframe></div>
-                    <script type="text/javascript">VK.Widgets.Group("vk_groups",{mode:1,width:"256",height:"280",color1:'FFFFFF',color2:'2B587A',color3:'5B7FA6'},56660615);</script>
+                    <div id="vk_groups"></div>
+                    <script type="text/javascript">
+                        VK.Widgets.Group("vk_groups", {
+                            mode: <?=Yii::$app->params['vkWidget']['widgetParams']['mode']?>,
+                            width: "<?=Yii::$app->params['vkWidget']['widgetParams']['width']?>",
+                            height: "<?=Yii::$app->params['vkWidget']['widgetParams']['height']?>",
+                            color1: '<?=Yii::$app->params['vkWidget']['widgetParams']['color1']?>',
+                            color2: '<?=Yii::$app->params['vkWidget']['widgetParams']['color2']?>',
+                            color3: '<?=Yii::$app->params['vkWidget']['widgetParams']['color3']?>'
+                        }, <?=Yii::$app->params['vkWidget']['widgetParams']['apiKey']?>);
+                    </script>
                 </div>
                 <div class="box nsp" style="min-height: 100px; margin-top: 8px; max-height: 300px;">
                     <div fb-iframe-plugin-query="app_id=171342606239806&amp;container_width=0&amp;header=true&amp;href=https%3A%2F%2Fwww.facebook.com%2Fkonfliktyizakony&amp;locale=ru_RU&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=255" fb-xfbml-state="rendered" class="fb-like-box fb_iframe_widget" data-href="https://www.facebook.com/konfliktyizakony" width="255px" data-width="280" data-show-faces="true" data-header="true" data-stream="false" data-show-border="false">
-                                        <span style="vertical-align: bottom; width: 255px; height: 271px;">
-                                            <iframe class="" src="http://www.facebook.com/plugins/like_box.php?app_id=171342606239806&amp;channel=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter%2F6Dg4oLkBbYq.js%3Fversion%3D41%23cb%3Df16a2936cdcec7a%26domain%3Dk-z.com.ua%26origin%3Dhttp%253A%252F%252Fk-z.com.ua%252Ffc1bf6d314134e%26relation%3Dparent.parent&amp;container_width=0&amp;header=true&amp;href=https%3A%2F%2Fwww.facebook.com%2Fkonfliktyizakony&amp;locale=ru_RU&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=255" style="border: medium none; visibility: visible; width: 255px; height: 271px;" title="fb:like_box Facebook Social Plugin" scrolling="no" allowtransparency="true" name="f1247c7ce4cb5b8" frameborder="0" height="1000px" width="255px"></iframe>
-                                        </span>
+                        <span style="vertical-align: bottom; width: 255px; height: 214px;"><iframe class="" src="http://www.facebook.com/plugins/like_box.php?app_id=171342606239806&amp;channel=http%3A%2F%2Fstatic.ak.facebook.com%2Fconnect%2Fxd_arbiter%2F6Dg4oLkBbYq.js%3Fversion%3D41%23cb%3Df25d63462f79ae6%26domain%3Dk-z.com.ua%26origin%3Dhttp%253A%252F%252Fk-z.com.ua%252Ff3b7d07cf465c0c%26relation%3Dparent.parent&amp;container_width=0&amp;header=true&amp;href=https%3A%2F%2Fwww.facebook.com%2Fkonfliktyizakony&amp;locale=ru_RU&amp;sdk=joey&amp;show_border=false&amp;show_faces=true&amp;stream=false&amp;width=255" style="border: medium none; visibility: visible; width: 255px;" title="fb:like_box Facebook Social Plugin" scrolling="no" allowtransparency="true" name="f22e833f8c969fc" width="255px" frameborder="0" height="214px"></iframe></span>
                     </div>
                 </div>
             </div>
