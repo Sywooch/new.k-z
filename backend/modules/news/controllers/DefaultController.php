@@ -115,8 +115,8 @@ class DefaultController extends Controller
         foreach(Image::find()->each() as $image){
             $imageObj = new \stdClass();
 
-            $imageObj->thumb = $image->link;
-            $imageObj->image = $image->link;
+            $imageObj->thumb = \Yii::$app->params['cdn'].$image->link;
+            $imageObj->image = \Yii::$app->params['cdn'].$image->link;
             $imageObj->title = empty($image->description) ? '' : $image->description;
             $imageObj->id = "img{$image->id}";
 
