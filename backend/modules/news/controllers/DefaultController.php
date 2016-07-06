@@ -86,7 +86,7 @@ class DefaultController extends Controller
         $image = new Image([
             'userID'    =>  \Yii::$app->user->id,
             'newsID'    =>  $newsID,
-            'link'      =>  \Yii::$app->params['cdn-link'].'/images/stories/'.$file
+            'link'      =>  '/images/stories/'.$file
         ]);
 
         $image->save(false);
@@ -95,7 +95,7 @@ class DefaultController extends Controller
             \Yii::$app->response->format = 'json';
 
             return [
-                'filelink'   =>  $image->link,
+                'filelink'   =>  \Yii::$app->params['cdn'].$image->link,
                 'id'    =>  "img{$image->id}"
             ];
         }
