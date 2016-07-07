@@ -34,7 +34,7 @@ class m160707_051700_migrate_comments extends Migration
                 'deleted'       =>  $comment['deleted']
             ]);
 
-            if($commentModel->save(false)){
+            if(strlen($comment['name']) < 72 && $commentModel->save(false)){
                 echo "saved!";
             }
 
