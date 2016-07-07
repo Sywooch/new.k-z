@@ -111,8 +111,15 @@ class SiteController extends Controller
 
         (new Query())->createCommand(\Yii::$app->db)->setSql("UPDATE `news` SET `hits` = `hits` + 1 WHERE `id` = '{$news->id}'")->execute();
 
+        $commentForm = new \frontend\models\CommentForm();
+
+        if(\Yii::$app->request->post('CommentForm')){
+            $commentForm->load(\Yii::$app->request->post());
+        }
+
         return $this->render('article', [
-            'article'   =>  $news
+            'article'       =>  $news,
+            'commentForm'   =>  $commentForm
         ]);
     }
 

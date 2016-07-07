@@ -28,6 +28,7 @@ use Yii;
  * @property integer $creator
  * @property string $textPreview
  * @property Category $category
+ * @property mixed images
  */
 class News extends \yii\db\ActiveRecord
 {
@@ -84,15 +85,29 @@ class News extends \yii\db\ActiveRecord
      * @return string
      */
     public function getImagePreview(){
-        $image = '';
-
-        preg_match('/(img|src)=("|\')[^"\'>]+/i', $this->textPreview, $media);
-
-        if(sizeof($media) >= 1){
-            $image = preg_replace('/src="/', '', $media['0']);
+        if(array_key_exists(0, $this->images)){
+            return $this->images[0];
         }
 
-        return preg_match('/^http/', $image) ? $image : \Yii::$app->params['cdn'].$image;
+        return '';
+    }
+
+    public function getImages(){
+        preg_match('/(img|src)=("|\')[^"\'>]+/i', $this->textPreview, $media);
+
+        $images = [];
+
+        foreach($media as $possibleImage){
+            $possibleImage = preg_replace('/src="/', '', $possibleImage);
+
+            $images[] = preg_match('/^http/', $possibleImage) ? $possibleImage : \Yii::$app->params['cdn'].$possibleImage;
+        }
+
+        return $images;
+    }
+
+    public function getComments(){
+        return $this->hasMany(Comment::className(), ['newsID' => 'id']);
     }
 
     public function beforeSave($insert)

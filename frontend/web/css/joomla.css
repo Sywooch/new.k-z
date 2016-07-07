@@ -88,7 +88,7 @@ dl.article-info dd { float: left; margin-right: 16px; }
 /* images */
 .articleContent img,
 .feed-item-description img ,
-.blog img{ float: left; margin: 0 10px 10px 0; display: block; padding: 0; background: #fff }
+.blog img{ float: left; margin: 0 10px 10px 0; display: block; padding: 0; max-width: 665px; background: #fff }
 img.caption { margin-top:5px; }
 .img_caption { margin-bottom:10px; background: #fff; padding:3px; border: 1px solid #e0e0e0; }
 .article-content img { margin:5px; }
