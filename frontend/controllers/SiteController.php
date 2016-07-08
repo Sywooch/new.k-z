@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use frontend\helpers\SelectedCategoriesHelper;
 use frontend\models\Category;
+use frontend\models\CommentForm;
 use frontend\models\News;
 use Yii;
 use common\models\LoginForm;
@@ -111,10 +112,18 @@ class SiteController extends Controller
 
         (new Query())->createCommand(\Yii::$app->db)->setSql("UPDATE `news` SET `hits` = `hits` + 1 WHERE `id` = '{$news->id}'")->execute();
 
-        $commentForm = new \frontend\models\CommentForm();
+        $commentForm = new CommentForm();
 
         if(\Yii::$app->request->post('CommentForm')){
             $commentForm->load(\Yii::$app->request->post());
+
+            $commentForm->news = $news;
+
+            if($commentForm->save()){
+                \Yii::$app->session->setFlash('comment-success', 'Комментарий успешно добавлен!');
+
+                $commentForm = new CommentForm();
+            }
         }
 
         return $this->render('article', [

@@ -36,7 +36,7 @@ echo Html::tag('h2', $this->title)?>
                 'query' =>  $article->getComments(),
                 'sort'  =>  [
                     'defaultOrder'  =>  [
-                        'date'  =>  SORT_DESC
+                        'date'  =>  SORT_ASC
                     ]
                 ]
             ]),
@@ -72,7 +72,9 @@ echo Html::tag('h2', $this->title)?>
     echo $form->field($commentForm, 'name'),
          $form->field($commentForm, 'email'),
          $form->field($commentForm, 'comment')->textarea(),
-         $form->field($commentForm, 'captcha'),
+         $form->field($commentForm, 'captcha')->widget(\yii\captcha\Captcha::className(), [
+             'captchaAction'   =>  'site/captcha'
+         ]),
          Html::tag('div',
              Html::button('Отправить', ['type' => 'submit']),
              [

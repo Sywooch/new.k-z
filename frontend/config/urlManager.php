@@ -9,7 +9,7 @@ return [
         'images/<link:(.*)>'            =>  'site/images',
         '<module:(rss)>'                      =>  '<module>/default/index',
         'rss/<id:(\w+)>-<link:(.*)>'    =>  'rss/default/feed',
-        '<action:(home)>'  =>  'site/<action>',
+        '<action:(home|captcha)>'  =>  'site/<action>',
         '<module:(rss)>/<action>'             =>  '<module>/default/<action>',
         [
             'pattern'   =>  '<link:(.*)><id:(\/\d+)>-<newsLink:(.*)>',

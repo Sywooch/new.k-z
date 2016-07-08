@@ -9,6 +9,7 @@
 namespace frontend\models;
 
 
+use common\models\Comment;
 use yii\base\Model;
 
 class CommentForm extends Model
@@ -21,9 +22,29 @@ class CommentForm extends Model
     public $comment;
 
     public $captcha;
+
+    public $newsID;
+
+    public function setNews($news){
+        $this->setAttributes([
+            'newsID'    =>  $news->id
+        ], false);
+    }
     
     public function save(){
-        
+        $comment = new Comment([
+            'author'    =>  $this->name,
+            'text'      =>  $this->comment,
+            'ip'        =>  \Yii::$app->request->getUserIP(),
+            'email'     =>  $this->email,
+            'newsID'    =>  $this->newsID
+        ]);
+
+        if($this->validate()){
+            return $comment->save(false);
+        }else{
+            return false;
+        }
     }
 
     public function attributeLabels()
