@@ -6,6 +6,7 @@
  **/
 use frontend\models\Category;
 use frontend\models\News;
+use yii\helpers\Html;
 
 $this->title = 'юридический online журнал конфликтных правовых ситуаций';
 
@@ -66,6 +67,16 @@ $css = <<<'CSS'
     height: 260px;
     margin-left: -50%;
 }
+
+div.textPreview{
+    max-height: 200px;
+    margin-top: -10px;
+    word-wrap: break-word;
+}
+
+div.textPreview::after{
+    content: '...';
+}
 CSS;
 
 $this->registerCss($css);
@@ -116,7 +127,7 @@ $this->registerCss($css);
                                                 <h4 class="nspHeader tleft fnone">
                                                     <a href="<?=$latestNews->fullLink?>" title="<?=$latestNews->title?>"><?=$latestNews->getTitle(23)?></a>
                                                 </h4>
-                                                <p class="nspText tleft fleft"><?=$latestNews->getTextPreview(223)?></p>
+                                                <?=Html::tag('div', $latestNews->getTextPreview(0), ['class' => 'nspText textPreview tleft fleft'])?>
                                             </div>
                                         </div>
                                     </div>
