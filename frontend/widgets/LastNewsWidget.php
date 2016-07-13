@@ -21,7 +21,7 @@ class LastNewsWidget extends Widget
     public $title = 'Последние новости';
     public $limit = 9;
 
-    public $titleLength = 28;
+    public $titleLength = 0;
 
     private function getNews(){
         $news = News::find();
@@ -57,11 +57,11 @@ class LastNewsWidget extends Widget
                         <span>{$this->title}</span>
                     </h3>
                     <div class=\"content\">
-                        <div class=\"nspMain nspFs100 activated\" id=\"nsp - nsp_216\" style=\"width:100 %;\">
+                        <div class=\"nspMain nspFs100 activated\" id=\"nsp_216\" style=\"width:100 %;\">
                             <div class=\"nspArts bottom\" style=\"width:100 %;\">
                                 <div style=\"width: 256px; overflow: hidden;\" class=\"nspArtScroll1\">
                                     <div style=\"width: 100000px;\" class=\"nspArtScroll2\">
-                                        <div style=\"width: 256px; float: left;\" class=\"nspArtPage\">
+                                        <div style=\"width: 256px; float: left;\" class=\"nspArtPage lastNews\">
                                             {$renderedNews}
                                         </div>
                                     </div>
@@ -84,7 +84,7 @@ class LastNewsWidget extends Widget
                 Html::tag('h4',
                     Html::a($news->getTitle($this->titleLength), $news->fullLink),
                     [
-                        'class' =>  'nspHeader tleft fnone'
+                        'class' =>  'nspHeader tleft fnone longHeader'
                     ]),
                 [
                     'style' =>  'padding: 0'

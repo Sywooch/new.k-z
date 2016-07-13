@@ -77,6 +77,10 @@ div.textPreview{
 div.textPreview::after{
     content: '...';
 }
+
+.lastNews{
+    width: 202px !important;
+}
 CSS;
 
 $this->registerCss($css);
@@ -125,7 +129,7 @@ $this->registerCss($css);
                                                     <img class="nspImage tleft fleft" alt="<?=$latestNews->title?>" style="width:195px;height:98px;margin:0 0 7px 0;" src="<?=$latestNews->imagePreview?>">
                                                 </a>
                                                 <h4 class="nspHeader tleft fnone">
-                                                    <a href="<?=$latestNews->fullLink?>" title="<?=$latestNews->title?>"><?=$latestNews->getTitle(23)?></a>
+                                                    <a href="<?=$latestNews->fullLink?>" title="<?=$latestNews->title?>"><?=$latestNews->title?></a>
                                                 </h4>
                                                 <?=Html::tag('div', $latestNews->getTextPreview(0), ['class' => 'nspText textPreview tleft fleft'])?>
                                             </div>

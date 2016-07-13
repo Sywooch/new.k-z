@@ -886,3 +886,11 @@ body #jc #nav-bottom,body #jc #nav-top {
     background:url(images/jc_rb_br.gif) 100% 100% no-repeat;
     padding-right:13px
 }
+
+.longHeader {
+    white-space: nowrap; /* Отменяем перенос текста */
+    overflow: hidden; /* Обрезаем содержимое */
+    /*position: relative; /* Относительное позиционирование */
+
+    text-overflow: ellipsis; /* Многоточие */
+}

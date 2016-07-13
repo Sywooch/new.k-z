@@ -18,7 +18,7 @@ unset($topNews[0]);
                         <div class="nspArt" style="width:100%!important;">
                             <div style="padding:0 10px 0 0">
                                 <h4 class="nspHeader tleft fnone">
-                                    <a href="<?=$firstNews->fullLink?>" title="<?=$firstNews->title?>"><?=$firstNews->getTitle(48)?></a>
+                                    <a href="<?=$firstNews->fullLink?>" title="<?=$firstNews->title?>"><?=$firstNews->title?></a>
                                 </h4>
                                 <a href="<?=$firstNews->fullLink?>">
                                     <img class="nspImage tleft fleft" alt="<?=$firstNews->title?>" style="width:225px;height:125px;margin:6px 14px 0 0;" src="<?=$firstNews->imagePreview?>">
@@ -40,8 +40,8 @@ unset($topNews[0]);
                         <ul class="nspList" style="width: 212px; float: left;">
                             <?php foreach($topNews as $news){?>
                                 <li>
-                                    <h4>
-                                        <a href="<?=$news->fullLink?>" title="<?=$news->title?>"><?=$news->getTitle(25)?></a>
+                                    <h4 class="longHeader">
+                                        <a href="<?=$news->fullLink?>" title="<?=$news->title?>"><?=$news->title?></a>
                                     </h4>
                                     <p><?=$news->getTextPreview(85)?></p>
                                 </li>

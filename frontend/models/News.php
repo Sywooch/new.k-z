@@ -116,7 +116,7 @@ class News extends \common\models\News
             return $preview;
         }
 
-        return strlen($preview) > $len ? trim(mb_substr($preview, 0, $len, 'UTF-8')).'…' : $preview;
+        return strlen($preview) > $len ? trim(mb_substr(strip_tags($preview), 0, $len, 'UTF-8')).'…' : $preview;
     }
 
     public static function getNews(){

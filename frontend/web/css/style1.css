@@ -93,7 +93,7 @@ div.pagination ul li a:hover { color: #cb260a; }
 .nspTopInterface .nspNext { background-image: url('../images/style1/nsp_buttons.png'); }
 .big_title .nspLinks ul li { background-image: url('../images/style1/bullet_color.png')!important; }
 .color_title .nspArt h4.nspHeader,
-.color_title .nspArt h4.nspHeader a { color: #a5240e; }
+.color_title .nspArt h4.nspHeader a { color: #a5240e; max-width: 200px;}
 .color_title .nspLinks ul li { background-image: url('../images/style1/bullet_color.png')!important; }
 div.sidebar .nspInfo a:hover { color: #cb260a; }
 .gkIsPopup-gk_sporter2 .prev,

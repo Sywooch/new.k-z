@@ -209,7 +209,7 @@ div.header .nspArt .nspText { display: none; }
 div.header .nspArt .nspHeader .nspInfo,
 div.header .nspArt .nspHeader .nspText { display: block; margin: 0; padding: 3px 15px 0 15px; color: #b7b7b7; font-weight: bold; font-size: 10px; font-family: Arial, Verdana, sans-serif; }
 div.header .nspHeader { position: absolute; top: 0; left: 0; border-radius: 3px 3px 0 0; -moz-border-radius: 3px 3px 0 0; -webkit-border-radius: 3px 3px 0 0; background: #333; padding: 0 0 12px 0; z-index: 1; margin: 0!important; text-transform: uppercase; }
-div.header .nspHeader a { color: #fff; padding: 15px 15px 0 15px; display: block; }
+div.header .nspHeader a { color: #fff; padding: 15px 15px 0 15px; display: block; max-width: 512px;}
 div.header .nspHeader a:hover { color: #888; }
 div.header .nspLinks { background: #f7f7f7; border-radius: 3px; -moz-border-radius: 3px; -webkit-border-radius: 3px; }
 div.header .nspList li { margin: 0 5px 0 10px!important; padding-left: 0!important; padding-right: 0!important; }
@@ -230,7 +230,7 @@ div.header .nspTopInterface .nspPagination li.active { background-position: 0 bo
 
 /* sidebar suffix */
 div.sidebar .nspHeader,
-div.sidebar .nspHeader a { font-family: Arial, Verdana, sans-serif!important; font-weight: bold!important; font-size: 12px!important; line-height: 1.2!important; margin: 0!important; }
+div.sidebar .nspHeader a { width: 175px; font-family: Arial, Verdana, sans-serif!important; font-weight: bold!important; font-size: 12px!important; line-height: 1.2!important; margin: 0!important; }
 div.sidebar .nspArt { border-top: 1px solid #e0e0e0; }
 div.sidebar .nspArt:first-child { border-top: none; }
 div.sidebar .nspInfo { color: #878787; font-size: 10px!important; line-height: 18px; }
