@@ -25,7 +25,7 @@ $news = $news[0];
                                             <a class="leftNews" href="<?= $news->fullLink ?>">
                                                 <img class="image" alt="<?= $news->title ?>" src="<?= $news->imagePreview ?>">
                                             </a>
-                                            <p class="nspText tleft fleft longText">
+                                            <p class="nspText tleft fleft longText" lang="ru">
                                                 <?= strip_tags($news->getTextPreview(0), '<a></a>') ?> <a class="readon inline" href="<?= $news->fullLink ?>">Подробнее</a>
                                             </p>
                                             <p class="nspInfo tleft fleft"></p>

@@ -900,11 +900,16 @@ body #jc #nav-bottom,body #jc #nav-top {
 }
 
 .readMore{
-    top: -26px;
-    right: -142px;
     z-index: 100;
     display: inline-block;
-    position: relative;
+    position: absolute;
+    left: 152px;
+    bottom: 6px;
+    margin-right: 2px;
     background: #fff;
     padding-left: 1px;
+}
+
+.newsBigBlock{
+    max-height: 295px;
 }
