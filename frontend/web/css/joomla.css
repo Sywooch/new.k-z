@@ -48,7 +48,7 @@ input[type=radio],
 .radio { height:auto !important; }
 select[size] { height:auto; }
 p.readmore a,
-a.readon { display: block; float: left; font-size: 10px!important; color:#a5240e; text-transform:uppercase; font-weight: bold; }
+a.readon { font-size: 10px!important; color:#a5240e; text-transform:uppercase; font-weight: bold; }
 p.readmore a:hover,
 a.readon:hover { text-decoration: underline; }
 .pagenav-next a,

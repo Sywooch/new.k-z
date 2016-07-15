@@ -20,13 +20,13 @@ $news = $news[0];
                                         <div style="padding:0">
                                             <h4 class="nspHeader tleft fnone">
                                                 <a href="<?= $news->fullLink ?>"
-                                                   title="<?= $news->title ?>"><?= $news->getTitle(23) ?></a>
+                                                   title="<?= $news->title ?>"><?= $news->title ?></a>
                                             </h4>
                                             <a class="leftNews" href="<?= $news->fullLink ?>">
                                                 <img class="image" alt="<?= $news->title ?>" src="<?= $news->imagePreview ?>">
                                             </a>
-                                            <p class="nspText tleft fleft">
-                                                <?= $news->getTextPreview(288) ?> <a class="readon inline" href="<?= $news->fullLink ?>">Подробнее</a>
+                                            <p class="nspText tleft fleft longText">
+                                                <?= strip_tags($news->getTextPreview(0), '<a></a>') ?> <a class="readon inline" href="<?= $news->fullLink ?>">Подробнее</a>
                                             </p>
                                             <p class="nspInfo tleft fleft"></p>
                                         </div>

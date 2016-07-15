@@ -31,7 +31,7 @@ use yii\helpers\Html;
                                             <div style="width: 100000px;" class="nspLinkScroll2">
                                                 <ul class="nspList" style="width: 228px; float: left;">
                                                     <?php foreach($category->getTopNews(3) as $news){
-                                                        echo Html::tag('li', Html::tag('h4', Html::a($news->getTitle(28), $news->fullLink)));
+                                                        echo Html::tag('li', Html::tag('h4', Html::a($news->title, $news->fullLink), ['class' => 'longHeader']));
                                                     } ?>
                                                 </ul>
                                             </div>
@@ -72,7 +72,7 @@ use yii\helpers\Html;
                                                 <div style="width: 100000px;" class="nspLinkScroll2">
                                                     <ul class="nspList" style="width: 228px; float: left;">
                                                         <?php foreach($category->getTopNews(3) as $news){
-                                                            echo Html::tag('li', Html::tag('h4', Html::a($news->getTitle(28), $news->fullLink)));
+                                                            echo Html::tag('li', Html::tag('h4', Html::a($news->title, $news->fullLink), ['class' => 'longHeader']));
                                                         } ?>
                                                     </ul>
                                                 </div>

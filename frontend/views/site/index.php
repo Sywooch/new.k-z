@@ -81,6 +81,9 @@ div.textPreview::after{
 .lastNews{
     width: 202px !important;
 }
+.topFourNews .nspText{
+    max-height: 120px;
+}
 CSS;
 
 $this->registerCss($css);

@@ -894,3 +894,17 @@ body #jc #nav-bottom,body #jc #nav-top {
 
     text-overflow: ellipsis; /* Многоточие */
 }
+
+.longText{
+    overflow: hidden;
+}
+
+.readMore{
+    top: -26px;
+    right: -142px;
+    z-index: 100;
+    display: inline-block;
+    position: relative;
+    background: #fff;
+    padding-left: 1px;
+}

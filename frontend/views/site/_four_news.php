@@ -15,7 +15,7 @@ unset($topNews[0]);
             <div style="width: 236px; overflow: hidden;" class="nspArtScroll1">
                 <div style="width: 100000px;" class="nspArtScroll2">
                     <div style="width: 236px; float: left;" class="nspArtPage">
-                        <div class="nspArt" style="width:100%!important;">
+                        <div class="nspArt topFourNews" style="width:100%!important;">
                             <div style="padding:0 10px 0 0">
                                 <h4 class="nspHeader tleft fnone">
                                     <a href="<?=$firstNews->fullLink?>" title="<?=$firstNews->title?>"><?=$firstNews->title?></a>
@@ -23,10 +23,8 @@ unset($topNews[0]);
                                 <a href="<?=$firstNews->fullLink?>">
                                     <img class="nspImage tleft fleft" alt="<?=$firstNews->title?>" style="width:225px;height:125px;margin:6px 14px 0 0;" src="<?=$firstNews->imagePreview?>">
                                 </a>
-                                <p class="nspText tleft fleft"><?=$firstNews->getTextPreview(110)?>
-                                    <a class="readon inline" href="<?=$firstNews->fullLink?>">Подробнее</a>
-                                </p>
-                                <p class="nspInfo  tleft fleft"></p>
+                                <p class="nspText tleft fleft longText"><?=strip_tags($firstNews->getTextPreview(0), '<a></a>')?></p>
+                                <span class="readMore">... <a class="readon inline" href="<?=$firstNews->fullLink?>">Подробнее</a></span>
                             </div>
                         </div>
                     </div>
@@ -43,7 +41,7 @@ unset($topNews[0]);
                                     <h4 class="longHeader">
                                         <a href="<?=$news->fullLink?>" title="<?=$news->title?>"><?=$news->title?></a>
                                     </h4>
-                                    <p><?=$news->getTextPreview(85)?></p>
+                                    <?=\yii\helpers\Html::tag('p', strip_tags($news->getTextPreview(0), '<a></a>'), ['class' => 'longText'])?>
                                 </li>
                             <?php } ?>
                         </ul>
