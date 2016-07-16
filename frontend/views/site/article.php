@@ -7,6 +7,15 @@ $this->title = $article->title;
 
 $this->params['breadcrumbs'][] = $this->title;
 
+$js = <<<'JS'
+$("body").on('click', '#comments .refresh', function(){    
+    $.pjax.reload({container: '#pjax-comments'});
+}).on("pjax:end", "#new_comment", function() {
+    $.pjax.reload({container:"#pjax-comments"});
+});
+JS;
+
+$this->registerJs($js);
 echo Html::tag('h2', $this->title)?>
 <ul class="actions">
     <li class="print-icon">
@@ -30,19 +39,14 @@ echo Html::tag('h2', $this->title)?>
 <div class="clear" style="clear: both"></div>
 <div id="jc">
     <div id="comments">
-        <h4>Комментарии <a class="refresh" href="#" title="Обновить список комментариев">&nbsp;</a></h4>
-        <?=\yii\widgets\ListView::widget([
-            'dataProvider'  =>  new \yii\data\ActiveDataProvider([
-                'query' =>  $article->getComments(),
-                'sort'  =>  [
-                    'defaultOrder'  =>  [
-                        'date'  =>  SORT_ASC
-                    ]
-                ]
-            ]),
+        <h4>Комментарии <button style="display: inline-block; float: right" title="Обновить список комментариев"><img src="/images/jc_refresh.gif"></button></h4>
+        <?php
+        \yii\widgets\Pjax::begin(['id' => 'pjax-comments', 'timeout' => 20000]);
+        echo \yii\widgets\ListView::widget([
+            'dataProvider'  =>  $comments,
             'options'   =>  [
                 'id'    =>  'comments-list',
-                'class' =>  'comments-list'
+                'class' =>  'comments-list',
             ],
             'summary'   =>  false,
             'emptyText' =>  'Комментарии отсутствуют. Возможно, ваш будет первым?',
@@ -55,20 +59,41 @@ echo Html::tag('h2', $this->title)?>
                     ]
                 );
             }
-        ])?>
+        ]);
+        \yii\widgets\Pjax::end()?>
         <div id="comments-list-footer">
-            <a class="refresh" href="#" title="Обновить список комментариев">Обновить список комментариев</a>
+            <button class="refresh" style="cursor: pointer" title="Обновить список комментариев">Обновить список комментариев</button>
             <br>
         </div>
     </div>
     <h4>Добавить комментарий</h4>
     <a id="addcomments" href="#addcomments"></a>
     <?php
+    \yii\widgets\Pjax::begin(['id' => 'new_comment']);
     $form = \kartik\form\ActiveForm::begin([
         'type'  =>  \kartik\form\ActiveForm::TYPE_HORIZONTAL,
         'id'    =>  'comments-form',
+        'options'   =>  [
+            'data-pjax' =>  true
+        ]
     ]);
-
+    
+    if(\Yii::$app->session->getFlash('saved', false)){
+        echo \yii\bootstrap\Alert::widget([
+            'body'      =>  \Yii::$app->session->getFlash('saved'),
+            'options'   =>  [
+                'class' =>  'alert alert-success alert-dismissible'
+            ]
+        ]);
+    }else if(\Yii::$app->session->getFlash('error', false)){
+        echo \yii\bootstrap\Alert::widget([
+            'body'      =>  \Yii::$app->session->getFlash('error'),
+            'options'   =>  [
+                'class' =>  'alert alert-danger alert-dismissible row col-xs-10 col-xs-offset-1'
+            ]
+        ]);
+    }
+    
     echo $form->field($commentForm, 'name'),
          $form->field($commentForm, 'email'),
          $form->field($commentForm, 'comment')->textarea(),
@@ -83,6 +108,7 @@ echo Html::tag('h2', $this->title)?>
         Html::tag('div', '', ['style' => 'clear: both;']);
 
     $form->end();
+    \yii\widgets\Pjax::end();
     ?>
     <div id="comments-footer" align="center"></div>
 </div>

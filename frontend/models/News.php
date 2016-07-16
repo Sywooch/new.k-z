@@ -105,6 +105,10 @@ class News extends \common\models\News
         return strlen($this->title) > $len ? trim(mb_substr($this->title, 0, $len, 'UTF-8')).'…' : $this->title;
     }
 
+    public function getModeratedComments(){
+        return false;
+    }
+
     /**
      * @param int $len
      * @return string

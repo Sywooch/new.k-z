@@ -157,7 +157,7 @@ use frontend\models\News;
                     <div class="bannergroup">
                         <div class="banneritem">
                             <!-- Afisha.Ukr.Net -->
-                            <style>
+                            <!--<style>
                                 .afisha {border:1px solid #cc0000;margin-top:11px;}
                                 .afisha .afishattl {background:#cc0000;padding-bottom:2px;text-align:center;}
                                 .afisha .afishattl a {color:#FFF;font-weight:bold;text-decoration:none;}
@@ -189,7 +189,7 @@ use frontend\models\News;
                     <div class="bannergroup">
                         <div class="banneritem">
                             <!-- Testoteka.Ukr.Net -->
-                            <style>
+                            <!--<style>
                                 .tests {border:1px solid #cc0000;margin-top:11px;margin-bottom:11px;}
                                 .tests .teststtl {background:#cc0000;padding-bottom:2px;text-align:center;}
                                 .tests .teststtl a {color:#FFF;font-weight:bold;text-decoration:none;}

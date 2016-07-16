@@ -86,7 +86,7 @@ $this->beginPage() ?>
                                 <div class="content">
                                     <div class="bannergroup">
                                         <!-- Job.Ukr.Net -->
-                                        <style>
+                                        <!--<style>
                                             .job-block a, .job-block a:hover {font-family: Arial, sans-serif;font-size: 12px;color:#000000;font-weight:bold;text-decoration: none}
                                             .job-block {background:#eeeeee url(http://informers.ukr.net/job/sim/jobnewimg/bottom-bg.gif) repeat-x bottom;border: 1px solid #c9c9c9;margin: auto auto 20px;width:690px;border-radius:5px; box-shadow:0 0 3px #999;}
                                             .job-block .job-ttl {background:url(http://informers.ukr.net/job/sim/jobnewimg/ttl-bg.gif) repeat-x top;position:relative;padding:5px 105px 5px 12px;border-bottom:1px solid #c9c9c9;text-align:left;border-radius:5px 5px 0 0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
@@ -122,7 +122,7 @@ $this->beginPage() ?>
                                 <div class="content">
                                     <div class="bannergroup">
                                         <!-- Kino.Ukr.Net -->
-                                        <style>
+                                        <!--<style>
                                             .kino {border:1px solid #cc0000;margin-top:11px;}
                                             .kino .kinottl {background:#cc0000;padding-bottom:2px;text-align:center;}
                                             .kino .kinottl a {color:#FFF;font-weight:bold;text-decoration:none;}

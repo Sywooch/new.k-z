@@ -120,7 +120,7 @@ class SiteController extends Controller
             $commentForm->news = $news;
 
             if($commentForm->save()){
-                \Yii::$app->session->setFlash('comment-success', 'Комментарий успешно добавлен!');
+                \Yii::$app->session->setFlash('saved', 'Комментарий успешно добавлен!'.($news->moderatedComments == 1 ? ' Он будет опубликован после проверки модератором.' : ''));
 
                 $commentForm = new CommentForm();
             }
@@ -128,7 +128,15 @@ class SiteController extends Controller
 
         return $this->render('article', [
             'article'       =>  $news,
-            'commentForm'   =>  $commentForm
+            'commentForm'   =>  $commentForm,
+            'comments'      =>  new ActiveDataProvider([
+                'query' =>  $news->getComments(),
+                'sort'  =>  [
+                    'defaultOrder'  =>  [
+                        'date'  =>  SORT_ASC
+                    ]
+                ]
+            ])
         ]);
     }
 

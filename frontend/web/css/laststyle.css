@@ -242,9 +242,11 @@ div#poll_loading_23 {
     display:block
 }
 #comments .comment-box {
-    margin:0;
-    padding:0;
-    color:#999
+    color:#999;
+    border: 1px solid #e0e0e0;
+    border-radius: 13px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
 }
 #comments .comment-avatar {
     float:left;
